@@ -331,3 +331,4 @@ Received Import Request.
 Start importing Assets/Content/Materials/Sources/UnlitTextureColor.shader using Guid(d0c824d209220564c96d9df7cdae7e72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48241f14d392ec777195412fb119d945') in 0.009669 seconds 
   Import took 0.013456 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
