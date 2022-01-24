@@ -182,8 +182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447921119}
-  m_LocalRotation: {x: 0.25268534, y: -0.36809194, z: 0.10466568, w: 0.8886527}
-  m_LocalPosition: {x: 50, y: 36, z: -40}
+  m_LocalRotation: {x: 0.25552207, y: -0.36280414, z: 0.10415353, w: 0.89007515}
+  m_LocalPosition: {x: 40, y: 36, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107185331}
@@ -363,8 +363,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770954772}
-  m_LocalRotation: {x: 0.25268534, y: -0.36809194, z: 0.10466568, w: 0.8886527}
-  m_LocalPosition: {x: 50, y: 36, z: -40}
+  m_LocalRotation: {x: 0.25552207, y: -0.36280414, z: 0.10415353, w: 0.89007515}
+  m_LocalPosition: {x: 40, y: 36, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -567,10 +567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635284044117843230, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
       propertyPath: m_Name
-      value: Player_1
+      value: Player_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
+--- !u!4 &1141969096 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8635284044117843226, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
+  m_PrefabInstance: {fileID: 1141969095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1717189374
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +612,7 @@ MonoBehaviour:
   - target: {fileID: 1781329270}
     weight: 1
     radius: 0
-  - target: {fileID: 0}
+  - target: {fileID: 1141969096}
     weight: 1
     radius: 0
 --- !u!4 &1717189376
@@ -618,7 +623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717189374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -775,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635284044117843230, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
       propertyPath: m_Name
-      value: Player_0
+      value: Player_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
