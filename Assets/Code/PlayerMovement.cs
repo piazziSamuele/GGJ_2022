@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        transform.position = transform.position + (currentMovementInput * speed * Time.deltaTime);
+        float targetAngle = Mathf.Atan2(CurrentMovementInput.x, CurrentMovementInput.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        transform.position += currentMovementInput * speed * Time.deltaTime;
     }
     private void RegisterMovementInput(Vector2 input)
     {
