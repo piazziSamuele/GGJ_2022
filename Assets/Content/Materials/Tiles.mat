@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tiles
-  m_Shader: {fileID: 4800000, guid: d0c824d209220564c96d9df7cdae7e72, type: 3}
+  m_Shader: {fileID: 4800000, guid: b0a6311acd70e4844b9fa5589e632f3b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -44,8 +44,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 20, y: 20}
+        m_Texture: {fileID: 2800000, guid: 7b94375de2e23a94fa74547d4ba9054e, type: 3}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -68,6 +68,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GridOffset: 0.29
+    - _GridOffsetSpeed: 2
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -87,5 +89,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.5901021, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 0.56257343, b: 0.43478712, a: 0.37986773}
   m_BuildTextureStacks: []
