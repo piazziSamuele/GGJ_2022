@@ -12,8 +12,11 @@ public class GameMatchManager : MonoBehaviour
     public int index = 1;
     bool blockSwitch = false;
     public Player Player_1, Player_2;
-    public Text switchHighlight;
+    public Text switchHighlight, timeText;
     public float TimerBlockValue = .2f;
+    public AudioSource soundtrack;
+    public GameObject GameConainer, WinObj, LoseObj, menuObj;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -50,6 +53,18 @@ public class GameMatchManager : MonoBehaviour
             }
         }
 
+        if (soundtrack != null && soundtrack.isPlaying)
+        {
+            int timeLeft = (int)(soundtrack.clip.length - soundtrack.time);
+              timeText.text =  string.Format("Time Left: {0}", timeLeft);
+            if(timeLeft <= 0)
+            {
+                GameConainer.SetActive(false);
+                WinObj.SetActive(true); // TEMP
+                LoseObj.SetActive(false);
+                menuObj.SetActive(true);
+            }
+        }
     }
 
     public IEnumerator MusicSwitchBlocker()
