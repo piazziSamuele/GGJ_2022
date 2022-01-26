@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1652,7 +1652,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 150
-  field of view: 28.332556
+  field of view: 28.311413
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2272,6 +2272,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1804037930}
     m_Modifications:
+    - target: {fileID: 5913360254048708467, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8635284044117843224, guid: a01c6e8eacd2fe046a49ea91802e131c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

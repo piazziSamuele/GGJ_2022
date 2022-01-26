@@ -18,7 +18,7 @@ public class EnvManager : MonoBehaviour
     {
         if (GameMatchManager.Manager.soundtrack != null && GameMatchManager.Manager.soundtrack.isPlaying)
         {
-            Color newArenaTint = new Color(Mathf.Clamp01( spectrum.MeanLevels[0] * 15f), Mathf.Clamp01(spectrum.MeanLevels[1] * 15f), Mathf.Clamp01(spectrum.MeanLevels[2] * 15f), 1.0f);
+            Color newArenaTint = new Color(Mathf.Clamp01( spectrum.MeanLevels[0] * 15f), Mathf.Clamp01(spectrum.MeanLevels[1] * 15f), Mathf.Clamp01(spectrum.MeanLevels[2] * 15f), Mathf.Clamp01(spectrum.MeanLevels[3] * 15f));
             arenaMat.SetColor("_Tint", newArenaTint);
 
         }
