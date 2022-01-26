@@ -2,44 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
-    //public references
-    public Rigidbody rb;
-
     //Exposed values
     public float speed = 5;
 
-    PlayerInput playerInput;
-    Vector3 currentMovementInput = new Vector3();
-    public Vector3 CurrentMovementInput { get { return currentMovementInput; } }
+    public PlayerInputHandler inputHandler;
+    Vector3 movementDirection = new Vector3();
+    public Vector3 velocity = new Vector3();
 
-    private void Awake()
-    {
-        playerInput = new PlayerInput();
-        playerInput.CharacterControls.Movement.performed += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
-        //adding this just to be sure it cancel movement when leaving input
-        playerInput.CharacterControls.Movement.canceled += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
-    }
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
+
+    public override Vector3 CurrentMovementDirection => movementDirection;
+
     void Update()
     {
-        float targetAngle = Mathf.Atan2(CurrentMovementInput.x, CurrentMovementInput.z) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-        transform.position += currentMovementInput * speed * Time.deltaTime;
-    }
-    private void RegisterMovementInput(Vector2 input)
-    {
-        currentMovementInput.x = input.x;
-        currentMovementInput.z = input.y;
-    }
-
-    private void OnEnable()
-    {
-        playerInput.Enable();
-    }
-    private void OnDisable()
-    {
-        playerInput.Disable();
+        Vector3 cameraPosition = Camera.main.transform.position;
+        cameraPosition.y = 0;
+        movementDirection = Camera.main.transform.TransformDirection(inputHandler.CurrentMovementInput);
+        movementDirection.y = 0;
+        movementDirection = movementDirection.normalized;
+        if (inputHandler.CurrentMovementInput.magnitude > .1f)
+        {
+            float targetAngle = Mathf.Atan2(movementDirection.x , movementDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+        transform.position += movementDirection * speed * Time.deltaTime;
     }
 
+}
+
+public class Movement : MonoBehaviour
+{
+    public virtual Vector3 CurrentMovementDirection { get; }
 }

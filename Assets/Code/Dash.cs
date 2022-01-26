@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : MonoBehaviour
+public class Dash : MovementPowerUp
 {
-    PlayerInput playerInput;
-    public PlayerMovement movement;
     public float dashDistance = 2f;
     public float dashSpeed = 5f;
     public float dashCooldown = 2F;
@@ -15,20 +13,15 @@ public class Dash : MonoBehaviour
     Vector3 movementInput = new Vector3();
     Vector3 startingPosition = new Vector3();
 
-    private void Awake()
-    {
-        playerInput = new PlayerInput();
-        playerInput.CharacterControls.Dash.performed += ctx => ProcessDashInput();
-        
-    }
     
-    private void ProcessDashInput()
+    internal override void PerformPowerUpAction()
     {
-        movementInput = movement.CurrentMovementInput;
-        dashTargetPosition = transform.position + (movementInput.normalized * dashDistance);
-        startingPosition = transform.position;
         if (dashTimer >= dashCooldown)
         {
+            movementInput = movement.CurrentMovementDirection;
+            dashTargetPosition = parentTransform.position + (movementInput.normalized * dashDistance);
+            startingPosition = parentTransform.position;
+
             dashTimer = 0f;
             if (dashCoroutine != null)
             StopCoroutine(dashCoroutine);
@@ -45,7 +38,7 @@ public class Dash : MonoBehaviour
 
         for (float t = 0; t <= 1; t += rate * Time.deltaTime)
         {
-            transform.position = Vector3.Lerp(startingPosition, dashTargetPosition,t);
+            parentTransform.position = Vector3.Lerp(startingPosition, dashTargetPosition,t);
             yield return null;
         }
 
@@ -53,14 +46,5 @@ public class Dash : MonoBehaviour
     void Update()
     {
         dashTimer += Time.deltaTime;
-    }
-
-    private void OnEnable()
-    {
-        playerInput.Enable();
-    }
-    private void OnDisable()
-    {
-        playerInput.Disable();
     }
 }
