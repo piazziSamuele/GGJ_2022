@@ -30,4 +30,12 @@ public class CurrentPowerUps : ScriptableObject
             powerUps[buttonNumber].HandlePowerUpButtonPressed();
         }
     }
+    public void ReleasePowerUp(int buttonNumber)
+    {
+        if (powerUps.Count > buttonNumber && powerUps[buttonNumber] != null)
+        {
+            powerUps[buttonNumber].HandlePowerUpButtonReleased();
+        }
+
+    }
 }

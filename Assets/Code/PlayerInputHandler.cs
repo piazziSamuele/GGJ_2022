@@ -9,16 +9,23 @@ public class PlayerInputHandler : MonoBehaviour
     Vector3 currentMovementInput = new Vector3();
     public Vector3 CurrentMovementInput { get { return currentMovementInput; } }
     public event Action<int> powerUpButtonPressed;
+    public event Action<int> powerUpButtonReleased;
 
     private void Awake()
     {
         playerInput = new PlayerInput();
 
         //Power Ups
-        playerInput.CharacterControls.Button1.performed += ctx => PowerUpButtonPressed(0);
-        playerInput.CharacterControls.Button2.performed += ctx => PowerUpButtonPressed(1);
-        playerInput.CharacterControls.Button3.performed += ctx => PowerUpButtonPressed(2);
-        playerInput.CharacterControls.Button4.performed += ctx => PowerUpButtonPressed(3);
+        playerInput.CharacterControls.Button1.started += ctx => PowerUpButtonPressed(0);
+        playerInput.CharacterControls.Button2.started += ctx => PowerUpButtonPressed(1);
+        playerInput.CharacterControls.Button3.started += ctx => PowerUpButtonPressed(2);
+        playerInput.CharacterControls.Button4.started += ctx => PowerUpButtonPressed(3);
+
+        playerInput.CharacterControls.Button1.canceled += ctx => PowerUpButtonReleased(0);
+        playerInput.CharacterControls.Button2.canceled += ctx => PowerUpButtonReleased(1);
+        playerInput.CharacterControls.Button3.canceled += ctx => PowerUpButtonReleased(2);
+        playerInput.CharacterControls.Button4.canceled += ctx => PowerUpButtonReleased(3);
+
 
         //Movement
         playerInput.CharacterControls.Movement.performed += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
@@ -30,6 +37,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         powerUpButtonPressed?.Invoke(buttonPressed);
     }
+    private void PowerUpButtonReleased(int buttonPressed)
+    {
+        powerUpButtonReleased?.Invoke(buttonPressed);
+    }
+
+
     private void RegisterMovementInput(Vector2 input)
     {
         currentMovementInput.x = input.x;

@@ -15,11 +15,17 @@ public class PowerUpsHandler : MonoBehaviour
     private void OnEnable()
     {
         inputHandler.powerUpButtonPressed += ActivatePowerUp;
+        inputHandler.powerUpButtonReleased += ReleasePowerUp;
     }
 
     private void ActivatePowerUp(int powerUpNumber)
     {
         currentPowerUps.ActivatePowerUp(powerUpNumber);
+    }
+
+    private void ReleasePowerUp(int powerUpNumber)
+    {
+        currentPowerUps.ReleasePowerUp(powerUpNumber);
     }
 
 
