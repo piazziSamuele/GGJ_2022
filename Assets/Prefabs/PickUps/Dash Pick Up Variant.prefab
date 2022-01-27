@@ -203,7 +203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 370999124190111451, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_Name
-      value: Dash Pick Up
+      value: Dash Pick Up Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5741228542619086776, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_RootOrder
@@ -249,42 +249,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: powerUpSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ba7e1cb3cab57b4b9af0f61adde3916, type: 2}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: equippablePowerUp
+      value: 
+      objectReference: {fileID: 3020895036637595200, guid: f59a9b35e6f8f3641a5c7a01e16af818, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
---- !u!1 &3939922492864269053 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 370999124190111451, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
-  m_PrefabInstance: {fileID: 3714175692299709478}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8946286232813355934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5741228542619086776, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
   m_PrefabInstance: {fileID: 3714175692299709478}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &986605363
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3939922492864269053}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &986605359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3939922492864269053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59efc7a64f53ed240ae399914402cfe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpSO: {fileID: 11400000, guid: 5ba7e1cb3cab57b4b9af0f61adde3916, type: 2}
-  equippablePowerUp: {fileID: 3020895036637595200, guid: f59a9b35e6f8f3641a5c7a01e16af818, type: 3}

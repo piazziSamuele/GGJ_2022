@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ddce5c632b55a43afd096e7dbbcb15, type: 3}
-  m_Name: Dash
+  m_Script: {fileID: 11500000, guid: 9cafc53e8497fe94a860a4b492fdde7d, type: 3}
+  m_Name: Rifle Power Up
   m_EditorClassIdentifier: 
+  damage: 0
+  projectileSpeed: 0
+  fireRate: 0

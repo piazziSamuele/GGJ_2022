@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] PowerUpSO powerUp;
-    public Transform parentTransform;
+    [HideInInspector] public Transform parentTransform;
     private void OnEnable()
     {
         powerUp.powerUpButtonPressed += PerformPowerUpAction;
