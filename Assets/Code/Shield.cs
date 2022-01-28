@@ -5,12 +5,27 @@ using UnityEngine;
 public class Shield : PowerUp
 {
     public GameObject shield;
-    internal override void PerformPowerUpAction()
+    Health playerHealth;
+    public float meleeDamageReduction = 5f;
+    private void Start()
     {
-        shield.gameObject.SetActive(true);
+        parentTransform.TryGetComponent(out playerHealth);
     }
-    internal override void EndPowerUpAction()
+    public override void PerformPowerUpAction()
     {
+        if( playerHealth != null)
+        {
+            playerHealth.AddFlatDamageReduction(meleeDamageReduction);
+        }
+        shield.gameObject.SetActive(true);
+
+    }
+    public override void EndPowerUpAction()
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.RemoveFlatDamageReduction(meleeDamageReduction);
+        }
         shield.gameObject.SetActive(false);
     }
 }

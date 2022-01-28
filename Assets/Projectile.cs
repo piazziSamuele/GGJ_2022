@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed;
+    public float damage;
     private void Start()
     {
         Destroy(this.gameObject, 5f);
@@ -14,5 +15,14 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out Health health))
+        {
+            health.TakeDamage(damage);
+        }
+        Destroy(this.gameObject);
     }
 }

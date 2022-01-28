@@ -14,7 +14,7 @@ public class Dash : MovementPowerUp
     Vector3 startingPosition = new Vector3();
 
     
-    internal override void PerformPowerUpAction()
+    public override void PerformPowerUpAction()
     {
         if (dashTimer >= dashCooldown)
         {

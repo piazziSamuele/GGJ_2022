@@ -17,4 +17,13 @@ public class MeleeWeapon : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out Health health))
+        {
+            print("i hit enemy");
+            health.TakeDamage(damage);
+        }
+    }
 }

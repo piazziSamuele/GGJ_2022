@@ -9,14 +9,15 @@ public class RangedPowerUp : PowerUp
     [SerializeField] GameObject rifle;
     public float fireRate = .1f;
     public float projectileSpeed = 10f;
+    public float damagePerBullet = 2f;
     Coroutine fireRoutine;
 
-    internal override void PerformPowerUpAction()
+    public override void PerformPowerUpAction()
     {
         rifle.SetActive(true);
         fireRoutine = StartCoroutine(FireRoutine());
     }
-    internal override void EndPowerUpAction()
+    public override void EndPowerUpAction()
     {
         rifle.SetActive(false);
         StopCoroutine(fireRoutine);
@@ -28,6 +29,7 @@ public class RangedPowerUp : PowerUp
         {
             Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
             projectile.speed = projectileSpeed;
+            projectile.damage = damagePerBullet;
             yield return new WaitForSeconds(fireRate);
         }
     }

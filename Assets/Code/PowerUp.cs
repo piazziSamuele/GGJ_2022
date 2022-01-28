@@ -17,8 +17,8 @@ public class PowerUp : MonoBehaviour
         powerUp.powerUpButtonReleased -= EndPowerUpAction;
 
     }
-    internal virtual void PerformPowerUpAction() { }
-    internal virtual void EndPowerUpAction() { }
+    public virtual void PerformPowerUpAction() { }
+    public virtual void EndPowerUpAction() { }
 }
 public class MovementPowerUp : PowerUp
 {
