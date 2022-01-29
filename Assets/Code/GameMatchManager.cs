@@ -12,6 +12,8 @@ public class GameMatchManager : MonoBehaviour
     public Player Player_1, Player_2;
     public float TimerBlockValue = .13f;
 
+    public GameObject[] PowerUps = new GameObject[0];
+
     [SerializeField]
     private AudioSource soundtrack;
     [SerializeField]
@@ -45,6 +47,7 @@ public class GameMatchManager : MonoBehaviour
     public void PlayAudioTrack()
     {
         soundtrack.Play();
+        SpawnAllPowerUps();
     }
 
     public bool GetAudioSourcePlayingValue()
@@ -91,9 +94,28 @@ public class GameMatchManager : MonoBehaviour
 
     public IEnumerator MusicSwitchBlocker()
     {
+
+
         yield return new WaitForSeconds(TimerBlockValue);
 
         blockSwitch = false;
+    }
+
+    private void SpawnPowerUp()
+    {
+        Vector3 propPosition = Random.insideUnitSphere * 10f;
+        propPosition.y = 1;
+        GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
+    }
+
+    private void SpawnAllPowerUps()
+    {
+        foreach(GameObject prop in PowerUps)
+        {
+            Vector3 propPosition = Random.insideUnitSphere * 10f;
+            propPosition.y = 1;
+            GameObject newPowerUp = Instantiate(prop, propPosition, Quaternion.identity, GameConainer.transform);
+        }
     }
 
     private void SwitchCurse()
@@ -104,6 +126,7 @@ public class GameMatchManager : MonoBehaviour
         ParticleSystem ps2 = Player_2.GetComponentInChildren<ParticleSystem>();
         if (ps1 != null) ps1.Play();
         if (ps2 != null) ps2.Play();
+        SpawnPowerUp();
 
     }
 }
