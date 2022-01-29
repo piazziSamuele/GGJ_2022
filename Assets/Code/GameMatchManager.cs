@@ -29,6 +29,7 @@ public class GameMatchManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
+        GameConainer.SetActive(false); //TEMP
     }
 
     public void RegisterUIManager(UIManager manager)

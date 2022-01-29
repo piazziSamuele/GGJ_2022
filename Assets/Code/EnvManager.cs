@@ -10,7 +10,7 @@ public class EnvManager : MonoBehaviour
     void Start()
     {
         spectrum = GameMatchManager.Manager.spectrum;
-        arenaMat = GetComponent<MeshRenderer>().sharedMaterial;
+        arenaMat = GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
