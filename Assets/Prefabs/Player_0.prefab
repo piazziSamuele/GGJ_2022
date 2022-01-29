@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAI: 0
+  m_movememnt: {fileID: 5913360254048708467}
 --- !u!114 &5913360254048708467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 2999288888848421858}
   currentPowerUps: {fileID: 11400000, guid: afc3205cf9bc8de4fb0a9a59f708c090, type: 2}
-  movement: {fileID: 5913360254048708467}
+  player: {fileID: 8635284044117843227}
 --- !u!114 &2999288888848421858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  flatDamageReduction: 0
 --- !u!1 &8635284045032371943
 GameObject:
   m_ObjectHideFlags: 0

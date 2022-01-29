@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedPowerUp : PowerUp
+public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
 {
     [SerializeField] Transform firePoint;
     [SerializeField] Projectile projectilePrefab;

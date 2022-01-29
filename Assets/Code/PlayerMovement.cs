@@ -23,7 +23,7 @@ public class PlayerMovement : Movement
         movementDirection = Camera.main.transform.TransformDirection(inputHandler.CurrentMovementInput);
         movementDirection.y = 0;
         movementDirection = movementDirection.normalized;
-        if (inputHandler.CurrentMovementInput.magnitude > .1f)
+        if (inputHandler.CurrentMovementInput.magnitude > .05f)
         {
             float targetAngle = Mathf.Atan2(movementDirection.x , movementDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);

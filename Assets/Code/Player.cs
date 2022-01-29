@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public bool IsAI;
     private Material m_playerMat;
-    private PlayerMovement m_movememnt;
+    public Movement m_movememnt;
     // Start is called before the first frame update
     void Start()
     {

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 370999124190111451, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_Name
-      value: Shield
+      value: Shield Pick Up
       objectReference: {fileID: 0}
     - target: {fileID: 5741228542619086776, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: powerUp
+      value: 
+      objectReference: {fileID: 8928224472340703983, guid: 5741a3917ef04314780b7f34311e51b6, type: 3}
     - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: powerUpSO
       value: 

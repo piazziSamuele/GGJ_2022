@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : PowerUp
+public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
 {
     public int weaponDamage;
     [SerializeField] MeleeWeapon weaponObject;

@@ -7,10 +7,9 @@ public class PowerUpsHandler : MonoBehaviour
 {
     public PlayerInputHandler inputHandler;
     public CurrentPowerUps currentPowerUps;
+    public Player player;
     public event Action<Vector3> movementAction;
     public event Action buttonAction;
-    //need reference to movement script to pass it to abilities like dash that need to know the movement direction
-    public Movement movement;
 
     private void OnEnable()
     {
@@ -33,14 +32,11 @@ public class PowerUpsHandler : MonoBehaviour
     {
         if(other.TryGetComponent(out PowerUpPickUp powerUp))
         {
-            if (currentPowerUps.AddPowerUp(powerUp.powerUpSO))
+            GenericPowerUp p = powerUp.powerUp;
+            if (currentPowerUps.AddPowerUp(p.PowerUpData))
             {
-                PowerUp equippedPowerUp = powerUp.EquipPowerUP(this.transform);
-                equippedPowerUp.parentTransform = this.transform;
-                if(equippedPowerUp as MovementPowerUp)
-                {
-                    ((MovementPowerUp)equippedPowerUp).movement = movement;
-                }
+                GenericPowerUp equipablePowerUp = Instantiate(p, transform);
+                equipablePowerUp.player = this.player;
             };
         }
     }
