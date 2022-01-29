@@ -704,6 +704,17 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &952820267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2988199889939621900, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
+  m_PrefabInstance: {fileID: 5092540595229782154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9269c23e7ae26a4fbc624c88ff28658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107185330
 GameObject:
   m_ObjectHideFlags: 3
@@ -1167,6 +1178,22 @@ PrefabInstance:
     - target: {fileID: 5092540595351032495, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5092540596781651475, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 952820267}
+    - target: {fileID: 5092540596781651475, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 952820267}
+    - target: {fileID: 5092540596781651475, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 5092540596781651475, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActiveGameContainer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974f3968f74721b4dbff4168ccb7a95d, type: 3}

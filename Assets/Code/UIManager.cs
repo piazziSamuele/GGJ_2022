@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         menuObj.SetActive(true);
     }
 
-    public void TurnOffGameContainer(bool value)
+    public void SetActiveGameContainer(bool value)
     {
         GameMatchManager.Manager.SetActiveGameContainer(value);
     }
