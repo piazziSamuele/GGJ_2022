@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameMatchManager : MonoBehaviour
 {
@@ -9,15 +8,18 @@ public class GameMatchManager : MonoBehaviour
     public AudioSpectrum spectrum;
     [Range(0,.5f)]
     public float threshlod;
-    public int index = 1;
-    bool blockSwitch = false;
+    public int index = 0;
     public Player Player_1, Player_2;
-    public Text switchHighlight, timeText;
-    public float TimerBlockValue = .2f;
-    public AudioSource soundtrack;
-    public GameObject GameConainer, WinObj, LoseObj, menuObj;
+    public float TimerBlockValue = .13f;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private AudioSource soundtrack;
+    [SerializeField]
+    private GameObject GameConainer;
+
+    private bool blockSwitch = false;
+    private UIManager m_ui;
+
     void Awake()
     {
         if(Manager == null)
@@ -29,12 +31,34 @@ public class GameMatchManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public void RegisterUIManager(UIManager manager)
+    {
+        m_ui = manager;
+    }
+
+    public void SetActiveGameContainer(bool isActive)
+    {
+        GameConainer.SetActive(isActive);
+    }
+
+    public void PlayAudioTrack()
+    {
+        soundtrack.Play();
+    }
+
+    public bool GetAudioSourcePlayingValue()
+    {
+        if(soundtrack != null && soundtrack.isPlaying)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
     void FixedUpdate()
     {
-        //Debug.Log(string.Format("{0} levels ",spectrum.Levels[index]));
-        //Debug.Log(string.Format("{0} PeakLevels", spectrum.PeakLevels[2]));
-        //Debug.Log(string.Format("{0} levels", spectrum.MeanLevels[index]));
 
         if(spectrum.MeanLevels[index] > threshlod && !blockSwitch)
         {
@@ -43,33 +67,29 @@ public class GameMatchManager : MonoBehaviour
                 SwitchCurse();
                 blockSwitch = true;
                 StartCoroutine(MusicSwitchBlocker());
-                switchHighlight.text = "Real Switch";
-                switchHighlight.color = Color.green;
+                if(m_ui != null) m_ui.UpdateDebugText(false);
             }
             else
             {
-                switchHighlight.text = "Fake Switch";
-                switchHighlight.color = Color.red;
+                if (m_ui != null) m_ui.UpdateDebugText(true);
             }
         }
 
         if (soundtrack != null && soundtrack.isPlaying)
         {
             int timeLeft = (int)(soundtrack.clip.length - soundtrack.time);
-              timeText.text =  string.Format("Time Left: {0}", timeLeft);
+            if (m_ui != null) m_ui.UpdateTimeText(timeLeft);
+            
             if(timeLeft <= 0)
             {
                 GameConainer.SetActive(false);
-                WinObj.SetActive(true); // TEMP
-                LoseObj.SetActive(false);
-                menuObj.SetActive(true);
+                if (m_ui != null) m_ui.ShowEndGame(true); //TEMP
             }
         }
     }
 
     public IEnumerator MusicSwitchBlocker()
     {
-        //yield return new WaitForSeconds(Random.Range(0.5f, 2.5f))   
         yield return new WaitForSeconds(TimerBlockValue);
 
         blockSwitch = false;
@@ -78,6 +98,6 @@ public class GameMatchManager : MonoBehaviour
     private void SwitchCurse()
     {
         Player_1.Switch();
-        Player_2.Switch();
+        Player_2.Switch();        
     }
 }
