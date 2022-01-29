@@ -71,5 +71,7 @@ PrefabInstance:
       propertyPath: equippablePowerUp
       value: 
       objectReference: {fileID: 1606787091142327427, guid: 5d75ef981d5204d44bcc9059793da4d7, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4507530920441457602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+    - {fileID: 9128014495978654701, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
