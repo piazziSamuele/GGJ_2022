@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 370999124190111451, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_Name
-      value: Rifle Power Up
+      value: Rifle Pick Up
       objectReference: {fileID: 0}
     - target: {fileID: 5741228542619086776, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_RootOrder
@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: powerUpSO
       value: 
       objectReference: {fileID: 11400000, guid: 0ac2e03ce14b9b44d9c5246aa5c62524, type: 2}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: powerUpPrefab
+      value: 
+      objectReference: {fileID: 2824649430539194348, guid: 7d865b52ce5ed974c80cd849fb6535a0, type: 3}
     - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: equippablePowerUp
       value: 

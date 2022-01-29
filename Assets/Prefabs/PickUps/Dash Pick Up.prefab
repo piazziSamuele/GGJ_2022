@@ -203,7 +203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 370999124190111451, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_Name
-      value: Dash Pick Up Variant
+      value: Dash Pick Up
       objectReference: {fileID: 0}
     - target: {fileID: 5741228542619086776, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: m_RootOrder
@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: powerUpSO
       value: 
       objectReference: {fileID: 11400000, guid: 5ba7e1cb3cab57b4b9af0f61adde3916, type: 2}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: powerUpPrefab
+      value: 
+      objectReference: {fileID: 3020895036637595200, guid: f59a9b35e6f8f3641a5c7a01e16af818, type: 3}
     - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: equippablePowerUp
       value: 

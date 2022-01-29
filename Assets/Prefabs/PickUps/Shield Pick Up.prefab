@@ -64,6 +64,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7a32d52887af6d04199385f781241bf8, type: 2}
     - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
+      propertyPath: powerUpPrefab
+      value: 
+      objectReference: {fileID: 8928224472340703983, guid: 5741a3917ef04314780b7f34311e51b6, type: 3}
+    - target: {fileID: 6286830381357623602, guid: e8a7aa0b1d8a3b946a828dd5e791a166, type: 3}
       propertyPath: equippablePowerUp
       value: 
       objectReference: {fileID: 8928224472340703983, guid: 5741a3917ef04314780b7f34311e51b6, type: 3}

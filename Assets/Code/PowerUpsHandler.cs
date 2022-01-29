@@ -32,7 +32,7 @@ public class PowerUpsHandler : MonoBehaviour
     {
         if(other.TryGetComponent(out PowerUpPickUp powerUp))
         {
-            GenericPowerUp p = powerUp.powerUp;
+            GenericPowerUp p = powerUp.powerUpPrefab;
             if (currentPowerUps.AddPowerUp(p.PowerUpData))
             {
                 GenericPowerUp equipablePowerUp = Instantiate(p, transform);

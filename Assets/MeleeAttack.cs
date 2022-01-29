@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
 {
-    public int weaponDamage;
-    [SerializeField] MeleeWeapon weaponObject;
+    [SerializeField] GameObject weaponObject;
+    [SerializeField] Animator animator;
+
     public override void PerformPowerUpAction()
     {
-        if(!weaponObject.gameObject.activeSelf)
+        if (CanAttack())
         {
             weaponObject.gameObject.SetActive(true);
-            weaponObject.Attack(weaponDamage);
+            Attack(powerUpData.damage);
 
         }
+    }
+    private bool CanAttack()
+    {
+        if (!weaponObject.activeSelf) return false;
+        return true;
+    }
+
+    public void Attack(int damage)
+    {
+        animator.SetTrigger("Attack");
+    }
+    public void AnimationEnded()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Health health))
+        {
+            health.TakeDamage(powerUpData.damage);
+        }
+
     }
 }

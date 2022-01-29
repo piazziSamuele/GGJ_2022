@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4503979ad64b7b41942e48fadc6b162, type: 3}
   m_Name: Base Shield Power Up
   m_EditorClassIdentifier: 
-  equippablePowerUpPrefab: {fileID: 0}
-  meleeDamageReductionValue: 0
+  meleeDamageReductionValue: 5

@@ -43,9 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54e4ba3abf6e4745bdfa52e3c666a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: 5ba7e1cb3cab57b4b9af0f61adde3916, type: 2}
-  parentTransform: {fileID: 0}
+  player: {fileID: 0}
+  powerUpData: {fileID: 11400000, guid: 3321db99bf3479d43beb6a3189c7b4c3, type: 2}
   movement: {fileID: 0}
-  dashDistance: 1.4
-  dashSpeed: 30
-  dashCooldown: 1

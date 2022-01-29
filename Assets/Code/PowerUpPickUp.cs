@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PowerUpPickUp : MonoBehaviour
 {
-    public GenericPowerUp powerUp;
+    public GenericPowerUp powerUpPrefab;
     
 }

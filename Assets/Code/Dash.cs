@@ -2,24 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : MovementPowerUp
+public class Dash : PowerUp<DashPowerUpSO>
 {
-    public float dashDistance = 2f;
-    public float dashSpeed = 5f;
-    public float dashCooldown = 2F;
     float dashTimer = 0f;
     Vector3 dashTargetPosition = new Vector3();
     Coroutine dashCoroutine;
     Vector3 movementInput = new Vector3();
     Vector3 startingPosition = new Vector3();
 
-    
+
     public override void PerformPowerUpAction()
     {
-        if (dashTimer >= dashCooldown)
+        if (dashTimer >= powerUpData.dashCooldown)
         {
-            movementInput = movement.CurrentMovementDirection;
-            dashTargetPosition = player.transform.position + (movementInput.normalized * dashDistance);
+            movementInput = player.m_movememnt.CurrentMovementDirection;
+            dashTargetPosition = player.transform.position + (movementInput.normalized * powerUpData.dashDistance);
             startingPosition = player.transform.position;
 
             dashTimer = 0f;
@@ -34,7 +31,7 @@ public class Dash : MovementPowerUp
     }
     IEnumerator DashCoroutine()
     {
-        float rate = dashSpeed / dashDistance;
+        float rate = powerUpData.dashSpeed / powerUpData.dashDistance;
 
         for (float t = 0; t <= 1; t += rate * Time.deltaTime)
         {

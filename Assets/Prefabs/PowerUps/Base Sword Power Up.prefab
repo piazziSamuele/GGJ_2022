@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437976308428098956}
-  - component: {fileID: 8369076323825911210}
   - component: {fileID: 4161389404965877247}
   - component: {fileID: 1406068593156821400}
   m_Layer: 0
@@ -65,19 +64,6 @@ Transform:
   m_Father: {fileID: 753301202154100672}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -49.64, z: 0}
---- !u!114 &8369076323825911210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008556233049764324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16490c3c78b07142b7bc8de6fb7dea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4161389404965877247}
 --- !u!95 &4161389404965877247
 Animator:
   serializedVersion: 3
@@ -154,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a32909202c4c43b0c41232ba9ecaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: 35668afceb9b6aa4db5cc3c5ad08a641, type: 2}
-  parentTransform: {fileID: 0}
-  weaponDamage: 15
-  weaponObject: {fileID: 8369076323825911210}
+  player: {fileID: 0}
+  powerUpData: {fileID: 11400000, guid: 35668afceb9b6aa4db5cc3c5ad08a641, type: 2}
+  weaponObject: {fileID: 1008556233049764324}
+  animator: {fileID: 4161389404965877247}
 --- !u!1001 &4898969087689164162
 PrefabInstance:
   m_ObjectHideFlags: 0

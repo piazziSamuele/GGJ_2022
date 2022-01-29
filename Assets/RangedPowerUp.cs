@@ -7,9 +7,6 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
     [SerializeField] Transform firePoint;
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] GameObject rifle;
-    public float fireRate = .1f;
-    public float projectileSpeed = 10f;
-    public float damagePerBullet = 2f;
     Coroutine fireRoutine;
 
     public override void PerformPowerUpAction()
@@ -28,9 +25,9 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
         while (true)
         {
             Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
-            projectile.speed = projectileSpeed;
-            projectile.damage = damagePerBullet;
-            yield return new WaitForSeconds(fireRate);
+            projectile.speed = powerUpData.projectileSpeed;
+            projectile.damage = powerUpData.damagePerBullet;
+            yield return new WaitForSeconds(powerUpData.fireRate);
         }
     }
 

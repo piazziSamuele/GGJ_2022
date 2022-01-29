@@ -23,10 +23,6 @@ public class PowerUp<T> : GenericPowerUp where T : PowerUpSO
         this.powerUpData = (T)powerUp;
     }
 }
-public class MovementPowerUp : PowerUp<MovementPowerUpSO>
-{
-    public Movement movement;
-}
 
 public abstract class GenericPowerUp : MonoBehaviour
 {
