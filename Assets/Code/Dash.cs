@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dash : PowerUp<DashPowerUpSO>
 {
-    float dashTimer = 0f;
+    float dashTimer = Mathf.Infinity;
     Vector3 dashTargetPosition = new Vector3();
     Coroutine dashCoroutine;
     Vector3 movementInput = new Vector3();
