@@ -99,6 +99,11 @@ public class GameMatchManager : MonoBehaviour
     private void SwitchCurse()
     {
         Player_1.Switch();
-        Player_2.Switch();        
+        Player_2.Switch();
+        ParticleSystem ps1 = Player_1.GetComponentInChildren<ParticleSystem>();
+        ParticleSystem ps2 = Player_2.GetComponentInChildren<ParticleSystem>();
+        if (ps1 != null) ps1.Play();
+        if (ps2 != null) ps2.Play();
+
     }
 }
