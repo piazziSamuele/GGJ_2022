@@ -13,14 +13,14 @@ public class PlayerMovement : Movement
 
 }
 
-public class Movement : MonoBehaviour
+public abstract class Movement : MonoBehaviour
 {
     //Exposed values
     public float speed = 5;
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
 
-    public virtual Vector3 MovementInput { get; }
+    public abstract Vector3 MovementInput { get; }
     public Vector3 CurrentMovementDirection => cmaeraRelatedMovementDirection;
     internal Vector3 cmaeraRelatedMovementDirection = new Vector3();
 
