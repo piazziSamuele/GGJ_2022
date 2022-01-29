@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cafc53e8497fe94a860a4b492fdde7d, type: 3}
   m_Name: Rifle Power Up
   m_EditorClassIdentifier: 
-  damage: 0
-  projectileSpeed: 0
-  fireRate: 0
+  damage: 5
+  projectileSpeed: 30
+  fireRate: 0.1
+  damagePerBullet: 2
