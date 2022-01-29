@@ -18,7 +18,7 @@ public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
     }
     private bool CanAttack()
     {
-        if (!weaponObject.activeSelf) return false;
+        if (weaponObject.activeSelf) return false;
         return true;
     }
 
@@ -28,7 +28,7 @@ public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
     }
     public void AnimationEnded()
     {
-        this.gameObject.SetActive(false);
+        weaponObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

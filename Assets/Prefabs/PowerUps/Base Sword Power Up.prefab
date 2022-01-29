@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437976308428098956}
-  - component: {fileID: 4161389404965877247}
   - component: {fileID: 1406068593156821400}
   m_Layer: 0
   m_Name: Sword
@@ -64,25 +63,6 @@ Transform:
   m_Father: {fileID: 753301202154100672}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -49.64, z: 0}
---- !u!95 &4161389404965877247
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008556233049764324}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 586cd26be748dc044bcdd22808d6d43e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &1406068593156821400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 753301202154100672}
   - component: {fileID: 1606787091142327427}
+  - component: {fileID: 797129323354421636}
   m_Layer: 0
   m_Name: Base Sword Power Up
   m_TagString: Untagged
@@ -143,7 +124,26 @@ MonoBehaviour:
   player: {fileID: 0}
   powerUpData: {fileID: 11400000, guid: 35668afceb9b6aa4db5cc3c5ad08a641, type: 2}
   weaponObject: {fileID: 1008556233049764324}
-  animator: {fileID: 4161389404965877247}
+  animator: {fileID: 797129323354421636}
+--- !u!95 &797129323354421636
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729518306278237583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 586cd26be748dc044bcdd22808d6d43e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4898969087689164162
 PrefabInstance:
   m_ObjectHideFlags: 0
