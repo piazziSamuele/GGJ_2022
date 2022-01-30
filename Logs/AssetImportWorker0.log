@@ -15,11 +15,19 @@ C:/Users/piazz/Documents/Files/Unity Projects/GGJ_2022
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< HEAD
 55673
 Successfully changed project path to: C:/Users/piazz/Documents/Files/Unity Projects/GGJ_2022
 C:/Users/piazz/Documents/Files/Unity Projects/GGJ_2022
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 32.60 ms, found 2 plugins.
+=======
+55741
+Successfully changed project path to: C:/Users/piazz/Documents/Files/Unity Projects/GGJ_2022
+C:/Users/piazz/Documents/Files/Unity Projects/GGJ_2022
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 36.03 ms, found 2 plugins.
+>>>>>>> ui_fixes_2
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.26f1 (7298b473bc1a)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Resources/UnitySubsystems
@@ -35,6 +43,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< HEAD
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56016
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
@@ -48,11 +57,27 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (495ms)
 		BeginReloadAssembly (47ms)
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56416
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001639 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 32.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.482 seconds
+Domain Reload Profiling:
+	ReloadAssembly (482ms)
+		BeginReloadAssembly (46ms)
+>>>>>>> ui_fixes_2
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< HEAD
 		EndReloadAssembly (388ms)
 			LoadAssemblies (45ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -60,12 +85,25 @@ Domain Reload Profiling:
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (25ms)
 			SetupLoadedEditorAssemblies (144ms)
+=======
+		EndReloadAssembly (375ms)
+			LoadAssemblies (45ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (125ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (142ms)
+>>>>>>> ui_fixes_2
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (32ms)
 				BeforeProcessingInitializeOnLoad (14ms)
+<<<<<<< HEAD
 				ProcessInitializeOnLoadAttributes (69ms)
+=======
+				ProcessInitializeOnLoadAttributes (67ms)
+>>>>>>> ui_fixes_2
 				ProcessInitializeOnLoadMethodAttributes (24ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -73,6 +111,7 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< HEAD
 Registered in 0.004343 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
@@ -83,10 +122,23 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (958ms)
 		BeginReloadAssembly (121ms)
+=======
+Registered in 0.004489 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 32.39 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.962 seconds
+Domain Reload Profiling:
+	ReloadAssembly (963ms)
+		BeginReloadAssembly (120ms)
+>>>>>>> ui_fixes_2
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< HEAD
 			CreateAndSetChildDomain (16ms)
 		EndReloadAssembly (784ms)
 			LoadAssemblies (77ms)
@@ -95,21 +147,40 @@ Domain Reload Profiling:
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (41ms)
 			SetupLoadedEditorAssemblies (316ms)
+=======
+			CreateAndSetChildDomain (15ms)
+		EndReloadAssembly (791ms)
+			LoadAssemblies (76ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (248ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (328ms)
+>>>>>>> ui_fixes_2
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (32ms)
 				BeforeProcessingInitializeOnLoad (61ms)
+<<<<<<< HEAD
 				ProcessInitializeOnLoadAttributes (206ms)
+=======
+				ProcessInitializeOnLoadAttributes (217ms)
+>>>>>>> ui_fixes_2
 				ProcessInitializeOnLoadMethodAttributes (9ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
+<<<<<<< HEAD
 			AwakeInstancesAfterBackupRestoration (5ms)
+=======
+			AwakeInstancesAfterBackupRestoration (6ms)
+>>>>>>> ui_fixes_2
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+<<<<<<< HEAD
 Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2022 Unused Serialized files (Serialized files now loaded: 0)
@@ -118,6 +189,16 @@ System memory in use after: 88.5 MB.
 
 Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2459.
 Total: 2.547000 ms (FindLiveObjects: 0.134300 ms CreateObjectMapping: 0.053700 ms MarkObjects: 2.310600 ms  DeleteObjects: 0.047300 ms)
+=======
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2023 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.4 MB.
+System memory in use after: 88.5 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2460.
+Total: 2.607800 ms (FindLiveObjects: 0.132400 ms CreateObjectMapping: 0.058500 ms MarkObjects: 2.288300 ms  DeleteObjects: 0.127500 ms)
+>>>>>>> ui_fixes_2
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,6 +215,7 @@ AssetImportParameters requested are different than current active one (requested
 Received Import Request.
   path: Assets/Scenes/ProtoLevel_01.unity
   artifactKey: Guid(fb6af1dc60b0ea84eade1d784df34346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+<<<<<<< HEAD
 Start importing Assets/Scenes/ProtoLevel_01.unity using Guid(fb6af1dc60b0ea84eade1d784df34346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5eca57aa44da3f31a2535e41553d4ea0') in 0.011555 seconds 
   Import took 0.013959 seconds .
 
@@ -168,5 +250,49 @@ Received Import Request.
   artifactKey: Guid(10d3b46e68d0fde4982346c75dc73a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scenes/Input_System_Scene 1.unity using Guid(10d3b46e68d0fde4982346c75dc73a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66204ce23fe789cb38780eba65011ee9') in 0.002773 seconds 
   Import took 0.005393 seconds .
+=======
+Start importing Assets/Scenes/ProtoLevel_01.unity using Guid(fb6af1dc60b0ea84eade1d784df34346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d65afbc5aa94d54abadf94e25a95594') in 0.011567 seconds 
+  Import took 0.013920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.725154 seconds.
+  path: Assets/Scenes/ProtoLevel_01 1.unity
+  artifactKey: Guid(68aa48e26e347f0488c13f61af545698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/ProtoLevel_01 1.unity using Guid(68aa48e26e347f0488c13f61af545698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc731d063a258055cb3687ef93ec3e97') in 0.002923 seconds 
+  Import took 0.005455 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.982450 seconds.
+  path: Assets/Scenes/teo's scene.unity
+  artifactKey: Guid(68aa48e26e347f0488c13f61af545698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/teo's scene.unity using Guid(68aa48e26e347f0488c13f61af545698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7307fadda920dae0dd8314cad5fe830b') in 0.002607 seconds 
+  Import took 0.005267 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.678705 seconds.
+  path: Assets/Scenes/teo's scene 1.unity
+  artifactKey: Guid(6e34bf518c24b82499a13317cf5b3f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/teo's scene 1.unity using Guid(6e34bf518c24b82499a13317cf5b3f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f43257f82e409d2944f09cc56662a18d') in 0.004755 seconds 
+  Import took 0.007614 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.663220 seconds.
+  path: Assets/Scenes/teo's scene 2.unity
+  artifactKey: Guid(9d41390949e72ed4f926a0e3b51008bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/teo's scene 2.unity using Guid(9d41390949e72ed4f926a0e3b51008bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc55e5bfa869e2804c6068b4c68bbf27') in 0.002244 seconds 
+  Import took 0.004752 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.857755 seconds.
+  path: Assets/Scenes/pick up spawn scene.unity
+  artifactKey: Guid(9d41390949e72ed4f926a0e3b51008bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/pick up spawn scene.unity using Guid(9d41390949e72ed4f926a0e3b51008bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efbfe87e353fdfd71ed33dd0d75566e3') in 0.002886 seconds 
+  Import took 0.005638 seconds .
+>>>>>>> ui_fixes_2
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
