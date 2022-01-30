@@ -8,7 +8,7 @@ public class ShieldPowerUp : PowerUp<ShieldPowerUpSO>
     public GameObject shield;
     private void Start()
     {
-        player.TryGetComponent(out playerHealth);
+        TryGetComponent(out playerHealth);
     }
     public override void PerformPowerUpAction()
     {

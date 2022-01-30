@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: Base Sword Power Up
   m_EditorClassIdentifier: 
   damage: 5
-  icon: {fileID: 21300000, guid: 1a454b0a487bd7d429750adff8e8fb8e, type: 3}

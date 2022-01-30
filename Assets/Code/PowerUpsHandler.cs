@@ -5,16 +5,17 @@ using System;
 
 public class PowerUpsHandler : MonoBehaviour
 {
-    public PlayerInputHandler inputHandler;
     public CurrentPowerUps currentPowerUps;
-    public Player player;
-    public event Action<Vector3> movementAction;
-    public event Action buttonAction;
-
+    public CharacterInputHandler characterControl;
     private void OnEnable()
     {
-        inputHandler.powerUpButtonPressed += ActivatePowerUp;
-        inputHandler.powerUpButtonReleased += ReleasePowerUp;
+        characterControl.powerUpButtonPressed += ActivatePowerUp;
+        characterControl.powerUpButtonReleased += ReleasePowerUp;
+    }
+    private void OnDisable()
+    {
+        characterControl.powerUpButtonPressed -= ActivatePowerUp;
+        characterControl.powerUpButtonReleased -= ReleasePowerUp;
     }
 
     private void ActivatePowerUp(int powerUpNumber)
@@ -30,14 +31,12 @@ public class PowerUpsHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out PowerUpPickUp powerUp))
+        if(other.TryGetComponent(out PowerUpPickUp pickUp))
         {
-            GenericPowerUp p = powerUp.powerUpPrefab;
-            if (currentPowerUps.AddPowerUp(p.PowerUpData))
+            GenericPowerUp p = pickUp.powerUpPrefab;
+            if (currentPowerUps.TryPickUp(p, transform, out GenericPowerUp equipablePowerUp))
             {
-                GenericPowerUp equipablePowerUp = Instantiate(p, transform);
-                equipablePowerUp.player = this.player;
-                GameMatchManager.Manager.UpdateInvetory();
+                equipablePowerUp.assignedCharacter = this.transform;
             };
         }
     }

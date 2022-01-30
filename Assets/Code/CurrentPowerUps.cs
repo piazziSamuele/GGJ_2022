@@ -8,39 +8,36 @@ public class CurrentPowerUps : ScriptableObject
 {
     public void ClearList()
     {
-        powerUps.Clear();
+        powerUpsData.Clear();
+        powerUpsInstance.Clear();
     }
-    [SerializeField] List<PowerUpSO> powerUps = new List<PowerUpSO>();
+    [SerializeField] List<PowerUpSO> powerUpsData = new List<PowerUpSO>();
+    [SerializeField] List<GenericPowerUp> powerUpsInstance = new List<GenericPowerUp>();
 
-    public bool AddPowerUp(PowerUpSO powerUp)
+
+    public bool TryPickUp(GenericPowerUp powerUp,Transform characterTransform, out GenericPowerUp powerUpInstance)
     {
-        if (powerUps.Contains(powerUp)) return false;
-        if (powerUps.Count >= 4) return false;
-        powerUps.Add(powerUp);
+        powerUpInstance = null;
+        if (powerUpsData.Contains(powerUp.PowerUpData)) return false;
+        if (powerUpsData.Count >= 4) return false;
+        powerUpsData.Add(powerUp.PowerUpData);
+        powerUpInstance = Instantiate(powerUp, characterTransform);
+        powerUpsInstance.Add(powerUpInstance);
         return true;
-    }
-    public PowerUpSO GetPowerUP(int powerUpNumber)
-    {
-        return powerUps[powerUpNumber];
     }
     public void ActivatePowerUp(int buttonNumber)
     {
-        if (powerUps.Count > buttonNumber && powerUps[buttonNumber] != null)
+        if (powerUpsInstance.Count > buttonNumber && powerUpsInstance[buttonNumber] != null)
         {
-            powerUps[buttonNumber].HandlePowerUpButtonPressed();
+            powerUpsInstance[buttonNumber].PerformPowerUpAction();
         }
     }
     public void ReleasePowerUp(int buttonNumber)
     {
-        if (powerUps.Count > buttonNumber && powerUps[buttonNumber] != null)
+        if (powerUpsInstance.Count > buttonNumber && powerUpsInstance[buttonNumber] != null)
         {
-            powerUps[buttonNumber].HandlePowerUpButtonReleased();
+            powerUpsInstance[buttonNumber].EndPowerUpAction();
         }
 
-    }
-
-    public PowerUpSO[] GetArray()
-    {
-        return powerUps.ToArray();
     }
 }

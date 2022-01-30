@@ -9,10 +9,9 @@ public class GameMatchManager : MonoBehaviour
     [Range(0,.5f)]
     public float threshlod;
     public int index = 0;
-    public Player Player_1, Player_2;
     public float TimerBlockValue = .13f;
-
-    public GameObject[] PowerUps = new GameObject[0];
+    public InputHandler player_1,player_2;
+    public CharacterInputHandler character_1, character_2;
 
     [SerializeField]
     private AudioSource soundtrack;
@@ -21,9 +20,10 @@ public class GameMatchManager : MonoBehaviour
 
     private bool blockSwitch = false;
     private UIManager m_ui;
-    private PowerUpsHandler m_currentPlayerPowerUps;
+
     void Awake()
     {
+        SetUpCharacterControllers();
         if(Manager == null)
         {
             Manager = this;
@@ -32,6 +32,12 @@ public class GameMatchManager : MonoBehaviour
             DestroyImmediate(this);
         }
         GameConainer.SetActive(false); //TEMP
+    }
+
+    private void SetUpCharacterControllers()
+    {
+        player_1.controlledCharacter = character_1;
+        player_2.controlledCharacter = character_2;
     }
 
     public void RegisterUIManager(UIManager manager)
@@ -47,7 +53,6 @@ public class GameMatchManager : MonoBehaviour
     public void PlayAudioTrack()
     {
         soundtrack.Play();
-        SpawnAllPowerUps();
     }
 
     public bool GetAudioSourcePlayingValue()
@@ -86,95 +91,23 @@ public class GameMatchManager : MonoBehaviour
             
             if(timeLeft <= 0)
             {
-                EndGame();
-
+                GameConainer.SetActive(false);
+                if (m_ui != null) m_ui.ShowEndGame(true); //TEMP
             }
         }
     }
 
     public IEnumerator MusicSwitchBlocker()
     {
-
-
         yield return new WaitForSeconds(TimerBlockValue);
 
         blockSwitch = false;
     }
 
-    private void SpawnPowerUp()
-    {
-        Vector3 propPosition = Random.insideUnitSphere * 10f;
-        propPosition.y = 1;
-        GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
-    }
-
-    private void SpawnAllPowerUps()
-    {
-        foreach(GameObject prop in PowerUps)
-        {
-            Vector3 propPosition = Random.insideUnitSphere * 10f;
-            propPosition.y = 1;
-            GameObject newPowerUp = Instantiate(prop, propPosition, Quaternion.identity, GameConainer.transform);
-        }
-    }
-
     private void SwitchCurse()
     {
-        Player_1.Switch();
-        Player_2.Switch();
-        ParticleSystem ps1 = Player_1.GetComponentInChildren<ParticleSystem>();
-        ParticleSystem ps2 = Player_2.GetComponentInChildren<ParticleSystem>();
-        if (ps1 != null) ps1.Play();
-        if (ps2 != null) ps2.Play();
-        SpawnPowerUp();
-        m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
-        if (m_ui != null) m_ui.UpdateInvetory();
-    }
-
-    public PowerUpsHandler GetCurrentPlayerPowerUps()
-    {
-        if(m_currentPlayerPowerUps == null)
-        {
-            m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
-        }
-        return m_currentPlayerPowerUps;
-    }
-
-    public void UpdateInvetory()
-    {
-        if (m_ui != null) m_ui.UpdateInvetory();
-    }
-
-    public void EndGame()
-    {
-        GameConainer.SetActive(false);
-        soundtrack.Stop();
-        if (m_ui != null) m_ui.ShowEndGame(GetWinner());
-    }
-
-    private bool GetWinner()
-    {
-        if(Player_1.GetComponent<Health>().health > 0)
-        {
-            if(Player_1.m_movememnt.enabled)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if (Player_2.m_movememnt.enabled)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        var v = player_1.controlledCharacter;
+        player_1.controlledCharacter = player_2.controlledCharacter;
+        player_2.controlledCharacter = v;
     }
 }

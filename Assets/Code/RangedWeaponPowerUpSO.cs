@@ -9,4 +9,5 @@ public class RangedWeaponPowerUpSO : WeaponPowerUpSO
     public float projectileSpeed = 30f;
     public float fireRate = .1f;
     public float damagePerBullet = 2f;
+
 }

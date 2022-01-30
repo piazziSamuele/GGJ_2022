@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Test_GameManager : MonoBehaviour
 {
-    [SerializeField] CurrentPowerUps currentPowerUps;
+    [SerializeField] List<CurrentPowerUps> currentPowerUps = new List<CurrentPowerUps>();
 
     private void OnEnable()
     {
-        currentPowerUps.ClearList();
+        foreach(CurrentPowerUps p in currentPowerUps)
+        p.ClearList();
     }
 }

@@ -6,7 +6,6 @@ public class EnvManager : MonoBehaviour
 {
     private AudioSpectrum spectrum;
     private Material arenaMat;
-
     // Start is called before the first frame update
     void Start()
     {

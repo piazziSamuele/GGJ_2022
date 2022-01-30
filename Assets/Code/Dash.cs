@@ -15,9 +15,9 @@ public class Dash : PowerUp<DashPowerUpSO>
     {
         if (dashTimer >= powerUpData.dashCooldown)
         {
-            movementInput = player.m_movememnt.CurrentMovementDirection;
-            dashTargetPosition = player.transform.position + (movementInput.normalized * powerUpData.dashDistance);
-            startingPosition = player.transform.position;
+            movementInput = assignedCharacter.GetComponent<CharacterMovement>().MovementInput;
+            dashTargetPosition = assignedCharacter.transform.position + (movementInput.normalized * powerUpData.dashDistance);
+            startingPosition = assignedCharacter.transform.position;
 
             dashTimer = 0f;
             if (dashCoroutine != null)
@@ -35,7 +35,7 @@ public class Dash : PowerUp<DashPowerUpSO>
 
         for (float t = 0; t <= 1; t += rate * Time.deltaTime)
         {
-            player.transform.position = Vector3.Lerp(startingPosition, dashTargetPosition,t);
+            assignedCharacter.transform.position = Vector3.Lerp(startingPosition, dashTargetPosition,t);
             yield return null;
         }
 

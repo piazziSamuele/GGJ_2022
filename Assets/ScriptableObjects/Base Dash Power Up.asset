@@ -15,4 +15,3 @@ MonoBehaviour:
   dashDistance: 2
   dashSpeed: 40
   dashCooldown: 1.5
-  icon: {fileID: 21300000, guid: 10227c648315c4648a7f668e9fc27c66, type: 3}

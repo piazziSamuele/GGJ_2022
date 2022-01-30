@@ -3,13 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputHandler : MonoBehaviour
+public class PlayerInputHandler : InputHandler
 {
     PlayerInput playerInput;
     Vector3 currentMovementInput = new Vector3();
-    public Vector3 CurrentMovementInput { get { return currentMovementInput; } }
-    public event Action<int> powerUpButtonPressed;
-    public event Action<int> powerUpButtonReleased;
 
     private void Awake()
     {
@@ -33,20 +30,24 @@ public class PlayerInputHandler : MonoBehaviour
         playerInput.CharacterControls.Movement.canceled += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
     }
     
-    private void PowerUpButtonPressed(int buttonPressed)
-    {
-        powerUpButtonPressed?.Invoke(buttonPressed);
-    }
-    private void PowerUpButtonReleased(int buttonPressed)
-    {
-        powerUpButtonReleased?.Invoke(buttonPressed);
-    }
 
 
     private void RegisterMovementInput(Vector2 input)
     {
         currentMovementInput.x = input.x;
         currentMovementInput.z = input.y;
+        controlledCharacter.CurrentMovementInput = CameraRelatedMovementInput(input);
+    }
+
+    public Vector3 CameraRelatedMovementInput(Vector3 input)
+    {
+        Vector3 v;
+        Vector3 cameraPosition = Camera.main.transform.position;
+        cameraPosition.y = 0;
+        v = Camera.main.transform.TransformDirection(input);
+        v.y = 0;
+        return v.normalized;
+
     }
 
     private void OnEnable()
@@ -57,4 +58,20 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerInput.Disable();
     }
+}
+
+
+public class InputHandler : MonoBehaviour
+{
+    public CharacterInputHandler controlledCharacter;
+
+    internal void PowerUpButtonPressed(int buttonPressed)
+    {
+        controlledCharacter.HandleAbilityButtonPressed(buttonPressed);
+    }
+    internal void PowerUpButtonReleased(int buttonPressed)
+    {
+        controlledCharacter.HandleAbilityButtonReleased(buttonPressed);
+    }
+
 }
