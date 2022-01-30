@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94809324d6fa3d24f83ad341868aa2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  assignedCharacter: {fileID: 0}
   powerUpData: {fileID: 11400000, guid: e83b97aa0bcec314cab4b35060994e8d, type: 2}
   shield: {fileID: 2882871289587947286}
 --- !u!1 &2882871289587947286

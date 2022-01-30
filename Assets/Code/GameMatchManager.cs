@@ -9,8 +9,9 @@ public class GameMatchManager : MonoBehaviour
     [Range(0,.5f)]
     public float threshlod;
     public int index = 0;
-    public Player Player_1, Player_2;
     public float TimerBlockValue = .13f;
+    public InputHandler player_1,player_2;
+    public CharacterInputHandler character_1, character_2;
 
     [SerializeField]
     private AudioSource soundtrack;
@@ -22,6 +23,7 @@ public class GameMatchManager : MonoBehaviour
 
     void Awake()
     {
+        SetUpCharacterControllers();
         if(Manager == null)
         {
             Manager = this;
@@ -30,6 +32,12 @@ public class GameMatchManager : MonoBehaviour
             DestroyImmediate(this);
         }
         GameConainer.SetActive(false); //TEMP
+    }
+
+    private void SetUpCharacterControllers()
+    {
+        player_1.controlledCharacter = character_1;
+        player_2.controlledCharacter = character_2;
     }
 
     public void RegisterUIManager(UIManager manager)
@@ -98,7 +106,8 @@ public class GameMatchManager : MonoBehaviour
 
     private void SwitchCurse()
     {
-        Player_1.Switch();
-        Player_2.Switch();        
+        var v = player_1.controlledCharacter;
+        player_1.controlledCharacter = player_2.controlledCharacter;
+        player_2.controlledCharacter = v;
     }
 }

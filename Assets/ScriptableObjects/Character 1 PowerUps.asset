@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d535d7ffbb691ec448c723fdbca6287c, type: 3}
-  m_Name: Player1PowerUps
+  m_Name: Character 1 PowerUps
   m_EditorClassIdentifier: 
   powerUps: []
