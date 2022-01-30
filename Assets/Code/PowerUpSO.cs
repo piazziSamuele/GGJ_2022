@@ -6,5 +6,4 @@ using System;
 [CreateAssetMenu(fileName = "Power Up", menuName ="GGJ/PowerUp")]
 public class PowerUpSO : ScriptableObject
 {
-    public Sprite icon;
 }
