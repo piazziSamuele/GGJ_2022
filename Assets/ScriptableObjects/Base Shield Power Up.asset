@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: Base Shield Power Up
   m_EditorClassIdentifier: 
   meleeDamageReductionValue: 5
-  icon: {fileID: 21300000, guid: 24e00451e4b218646a8ea20e51412c27, type: 3}
