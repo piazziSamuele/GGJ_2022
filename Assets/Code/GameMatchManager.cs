@@ -21,7 +21,7 @@ public class GameMatchManager : MonoBehaviour
 
     private bool blockSwitch = false;
     private UIManager m_ui;
-
+    private PowerUpsHandler m_currentPlayerPowerUps;
     void Awake()
     {
         if(Manager == null)
@@ -127,6 +127,21 @@ public class GameMatchManager : MonoBehaviour
         if (ps1 != null) ps1.Play();
         if (ps2 != null) ps2.Play();
         SpawnPowerUp();
+        m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
+        if (m_ui != null) m_ui.UpdateInvetory();
+    }
 
+    public PowerUpsHandler GetCurrentPlayerPowerUps()
+    {
+        if(m_currentPlayerPowerUps == null)
+        {
+            m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
+        }
+        return m_currentPlayerPowerUps;
+    }
+
+    public void UpdateInvetory()
+    {
+        if (m_ui != null) m_ui.UpdateInvetory();
     }
 }

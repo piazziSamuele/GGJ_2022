@@ -8,6 +8,7 @@ public class PowerUpSO : ScriptableObject
 {
     public event Action powerUpButtonPressed;
     public event Action powerUpButtonReleased;
+    public Sprite icon;
 
     public void HandlePowerUpButtonPressed()
     {

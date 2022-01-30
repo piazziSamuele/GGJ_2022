@@ -37,6 +37,7 @@ public class PowerUpsHandler : MonoBehaviour
             {
                 GenericPowerUp equipablePowerUp = Instantiate(p, transform);
                 equipablePowerUp.player = this.player;
+                GameMatchManager.Manager.UpdateInvetory();
             };
         }
     }

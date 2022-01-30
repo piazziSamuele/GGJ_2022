@@ -16,3 +16,4 @@ MonoBehaviour:
   projectileSpeed: 30
   fireRate: 0.1
   damagePerBullet: 2
+  icon: {fileID: 21300000, guid: 50c7ef4b234f79947b1927dcb43d2661, type: 3}
