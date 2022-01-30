@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject  WinObj, LoseObj, MenuObj;
+    public GameObject  WinObj, LoseObj, MenuObj, GamePanel;
     public Text SwitchHighlight, TimeText;
     public PlayerUIStatsView PlayerOneStats, PlayerTwoStats;
     public InvetoryItemUIView[] Inventory = new InvetoryItemUIView[4];
@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
         WinObj.SetActive(won);
         LoseObj.SetActive(!won);
         MenuObj.SetActive(true);
+        GamePanel.SetActive(false);
+
     }
 
     public void SetActiveGameContainer(bool value)

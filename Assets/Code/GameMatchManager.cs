@@ -86,8 +86,8 @@ public class GameMatchManager : MonoBehaviour
             
             if(timeLeft <= 0)
             {
-                GameConainer.SetActive(false);
-                if (m_ui != null) m_ui.ShowEndGame(true); //TEMP
+                EndGame();
+
             }
         }
     }
@@ -143,5 +143,38 @@ public class GameMatchManager : MonoBehaviour
     public void UpdateInvetory()
     {
         if (m_ui != null) m_ui.UpdateInvetory();
+    }
+
+    public void EndGame()
+    {
+        GameConainer.SetActive(false);
+        soundtrack.Stop();
+        if (m_ui != null) m_ui.ShowEndGame(GetWinner());
+    }
+
+    private bool GetWinner()
+    {
+        if(Player_1.GetComponent<Health>().health > 0)
+        {
+            if(Player_1.m_movememnt.enabled)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (Player_2.m_movememnt.enabled)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

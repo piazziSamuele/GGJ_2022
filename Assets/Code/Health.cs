@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     {
         if(damage >= health)
         {
-            //kill
+            health = 0;
+            GameMatchManager.Manager.EndGame();
         }
         else
         {
