@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 5242118206941974681}
   Stamina: {fileID: 508440208068272690}
+  m_UItransform: {fileID: 5624915778180731966}
 --- !u!114 &6456298649976782493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4726,6 +4727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 6849227782331765135}
   Stamina: {fileID: 9066643342364753670}
+  m_UItransform: {fileID: 4210827812816425910}
 --- !u!114 &3625387745545582106
 MonoBehaviour:
   m_ObjectHideFlags: 0

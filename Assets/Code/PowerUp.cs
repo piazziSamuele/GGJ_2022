@@ -10,11 +10,22 @@ public class PowerUp<T> : GenericPowerUp where T : PowerUpSO
     {
         this.powerUpData = (T)powerUp;
     }
+    public override void SubscribeToEvents()
+    {
+        assignedCharacter.onSwitch += StopAllCoroutines;
+    }
+    private void OnDisable()
+    {
+        assignedCharacter.onSwitch -= StopAllCoroutines;
+
+    }
+
 }
 
 public abstract class GenericPowerUp : MonoBehaviour
 {
-    public Transform assignedCharacter;
+    public ControllableCharacter assignedCharacter;
+    public virtual void SubscribeToEvents() { }
     public virtual PowerUpSO PowerUpData { get; }
     public virtual void PerformPowerUpAction() { }
     public virtual void EndPowerUpAction() { }

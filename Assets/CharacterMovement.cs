@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] CharacterInputHandler characterControl;
-
+    [SerializeField] ControllableCharacter character;
     //Exposed values
     public float speed = 5;
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
 
-    public Vector3 MovementInput => characterControl.CurrentMovementInput;
+    public Vector3 MovementInput => character.CurrentMovementInput;
 
     
 

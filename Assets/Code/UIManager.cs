@@ -7,15 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public GameObject  WinObj, LoseObj, MenuObj, GamePanel;
     public Text SwitchHighlight, TimeText;
-    public PlayerUIStatsView PlayerOneStats, PlayerTwoStats;
     public InvetoryItemUIView[] Inventory = new InvetoryItemUIView[4];
     public void Start()
     {
         if(GameMatchManager.Manager != null)
         {
             GameMatchManager.Manager.RegisterUIManager(this);
-            PlayerOneStats.AssignPlayer(GameMatchManager.Manager.Player_1.GetComponent<Health>());
-            PlayerTwoStats.AssignPlayer(GameMatchManager.Manager.Player_2.GetComponent<Health>());
         }
     }
 
@@ -59,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateInvetory()
     {
-        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().currentPowerUps.GetArray();
+        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetArray();
         for (int i = 0; i < Inventory.Length; i++)
         {
             Inventory[i].EmptySlot();

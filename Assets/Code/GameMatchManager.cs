@@ -10,8 +10,9 @@ public class GameMatchManager : MonoBehaviour
     public float threshlod;
     public int index = 0;
     public float TimerBlockValue = .13f;
-    public InputHandler player_1,player_2;
-    public CharacterInputHandler character_1, character_2;
+    public InputHandler player,ai;
+    public GameMatchData matchData;
+    public ControllableCharacter character_1, character_2;
 
     public GameObject[] PowerUps = new GameObject[0];
 
@@ -38,8 +39,8 @@ public class GameMatchManager : MonoBehaviour
 
     private void SetUpCharacterControllers()
     {
-        player_1.controlledCharacter = character_1;
-        player_2.controlledCharacter = character_2;
+        player.controlledCharacter = character_1;
+        ai.controlledCharacter = character_2;
     }
 
     public void RegisterUIManager(UIManager manager)
@@ -100,6 +101,11 @@ public class GameMatchManager : MonoBehaviour
         }
     }
 
+    public void EndGame()
+    {
+
+    }
+
     public IEnumerator MusicSwitchBlocker()
     {
 
@@ -116,6 +122,11 @@ public class GameMatchManager : MonoBehaviour
         GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
     }
 
+    public CurrentPowerUps GetCurrentPlayerPowerUps()
+    {
+        return player.controlledCharacter.currentPowerUps;
+    }
+
     private void SpawnAllPowerUps()
     {
         foreach(GameObject prop in PowerUps)
@@ -128,8 +139,12 @@ public class GameMatchManager : MonoBehaviour
 
     private void SwitchCurse()
     {
-        var v = player_1.controlledCharacter;
-        player_1.controlledCharacter = player_2.controlledCharacter;
-        player_2.controlledCharacter = v;
+        character_1.OnSwitch();
+        character_2.OnSwitch();
+        var v = player.controlledCharacter;
+        player.controlledCharacter = ai.controlledCharacter;
+        ai.controlledCharacter = v;
+        m_ui.UpdateInvetory();
+
     }
 }

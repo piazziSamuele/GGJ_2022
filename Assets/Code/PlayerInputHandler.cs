@@ -36,6 +36,7 @@ public class PlayerInputHandler : InputHandler
     {
         currentMovementInput.x = input.x;
         currentMovementInput.z = input.y;
+        if(controlledCharacter != null)
         controlledCharacter.CurrentMovementInput = CameraRelatedMovementInput(input);
     }
 
@@ -63,14 +64,20 @@ public class PlayerInputHandler : InputHandler
 
 public class InputHandler : MonoBehaviour
 {
-    public CharacterInputHandler controlledCharacter;
+    internal ControllableCharacter controlledCharacter;
+    public virtual void SetControlledCharacter(ControllableCharacter character)
+    {
+        controlledCharacter = character;
+    }
 
     internal void PowerUpButtonPressed(int buttonPressed)
     {
+        if(controlledCharacter != null)
         controlledCharacter.HandleAbilityButtonPressed(buttonPressed);
     }
     internal void PowerUpButtonReleased(int buttonPressed)
     {
+        if(controlledCharacter != null)
         controlledCharacter.HandleAbilityButtonReleased(buttonPressed);
     }
 
