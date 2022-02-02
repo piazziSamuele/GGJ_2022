@@ -8,11 +8,15 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] GameObject rifle;
     Coroutine fireRoutine;
+    bool coroutineIsRunning = false;
 
     public override void PerformPowerUpAction()
     {
-        rifle.SetActive(true);
-        fireRoutine = StartCoroutine(FireRoutine());
+        if (!coroutineIsRunning)
+        {
+            rifle.SetActive(true);
+            fireRoutine = StartCoroutine(FireRoutine());
+        }
     }
     public override void EndPowerUpAction()
     {
@@ -22,6 +26,7 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
 
     IEnumerator FireRoutine()
     {
+        coroutineIsRunning = true;
         while (true)
         {
             Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);

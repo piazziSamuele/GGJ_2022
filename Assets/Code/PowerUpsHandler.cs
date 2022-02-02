@@ -5,27 +5,28 @@ using System;
 
 public class PowerUpsHandler : MonoBehaviour
 {
-    public CurrentPowerUps currentPowerUps;
-    public CharacterInputHandler characterControl;
+    public ControllableCharacter character;
+    public UIManager uiManager;
     private void OnEnable()
     {
-        characterControl.powerUpButtonPressed += ActivatePowerUp;
-        characterControl.powerUpButtonReleased += ReleasePowerUp;
+        character.powerUpButtonPressed += ActivatePowerUp;
+        character.powerUpButtonReleased += ReleasePowerUp;
     }
     private void OnDisable()
     {
-        characterControl.powerUpButtonPressed -= ActivatePowerUp;
-        characterControl.powerUpButtonReleased -= ReleasePowerUp;
+        character.powerUpButtonPressed -= ActivatePowerUp;
+        character.powerUpButtonReleased -= ReleasePowerUp;
+        character.currentPowerUps.ClearList();
     }
 
     private void ActivatePowerUp(int powerUpNumber)
     {
-        currentPowerUps.ActivatePowerUp(powerUpNumber);
+        character.currentPowerUps.ActivatePowerUp(powerUpNumber);
     }
 
     private void ReleasePowerUp(int powerUpNumber)
     {
-        currentPowerUps.ReleasePowerUp(powerUpNumber);
+        character.currentPowerUps.ReleasePowerUp(powerUpNumber);
     }
 
 
@@ -34,9 +35,11 @@ public class PowerUpsHandler : MonoBehaviour
         if(other.TryGetComponent(out PowerUpPickUp pickUp))
         {
             GenericPowerUp p = pickUp.powerUpPrefab;
-            if (currentPowerUps.TryPickUp(p, transform, out GenericPowerUp equipablePowerUp))
+            if (character.currentPowerUps.TryPickUp(p, transform, out GenericPowerUp equipablePowerUp))
             {
-                equipablePowerUp.assignedCharacter = this.transform;
+                uiManager.UpdateInvetory();
+                equipablePowerUp.assignedCharacter = this.character;
+                equipablePowerUp.SubscribeToEvents();
             };
         }
     }

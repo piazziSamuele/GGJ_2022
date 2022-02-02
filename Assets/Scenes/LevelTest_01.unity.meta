@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/LevelTest_01.unity.meta
 guid: cf1d52533fc2309449c96faa7af38b70
+=======
+guid: 9e20d212f69660f47b0f444d049aa4f9
+>>>>>>> input_system_refactor:Assets/Code/GameMatchManager.cs.orig.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

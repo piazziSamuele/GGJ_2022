@@ -10,9 +10,8 @@ public class GameMatchManager : MonoBehaviour
     public float threshlod;
     public int index = 0;
     public float TimerBlockValue = .13f;
-    public InputHandler player,ai;
-    public GameMatchData matchData;
-    public ControllableCharacter character_1, character_2;
+    public InputHandler player_1,player_2;
+    public CharacterInputHandler character_1, character_2;
 
     public GameObject[] PowerUps = new GameObject[0];
 
@@ -23,7 +22,7 @@ public class GameMatchManager : MonoBehaviour
 
     private bool blockSwitch = false;
     private UIManager m_ui;
-
+    private PowerUpsHandler m_currentPlayerPowerUps;
     void Awake()
     {
         SetUpCharacterControllers();
@@ -39,8 +38,8 @@ public class GameMatchManager : MonoBehaviour
 
     private void SetUpCharacterControllers()
     {
-        player.controlledCharacter = character_1;
-        ai.controlledCharacter = character_2;
+        player_1.controlledCharacter = character_1;
+        player_2.controlledCharacter = character_2;
     }
 
     public void RegisterUIManager(UIManager manager)
@@ -101,11 +100,6 @@ public class GameMatchManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
-    {
-
-    }
-
     public IEnumerator MusicSwitchBlocker()
     {
 
@@ -122,11 +116,6 @@ public class GameMatchManager : MonoBehaviour
         GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
     }
 
-    public CurrentPowerUps GetCurrentPlayerPowerUps()
-    {
-        return player.controlledCharacter.currentPowerUps;
-    }
-
     private void SpawnAllPowerUps()
     {
         foreach(GameObject prop in PowerUps)
@@ -139,12 +128,67 @@ public class GameMatchManager : MonoBehaviour
 
     private void SwitchCurse()
     {
-        character_1.OnSwitch();
-        character_2.OnSwitch();
-        var v = player.controlledCharacter;
-        player.controlledCharacter = ai.controlledCharacter;
-        ai.controlledCharacter = v;
-        m_ui.UpdateInvetory();
+<<<<<<< HEAD
+        var v = player_1.controlledCharacter;
+        player_1.controlledCharacter = player_2.controlledCharacter;
+        player_2.controlledCharacter = v;
+=======
+        Player_1.Switch();
+        Player_2.Switch();
+        ParticleSystem ps1 = Player_1.GetComponentInChildren<ParticleSystem>();
+        ParticleSystem ps2 = Player_2.GetComponentInChildren<ParticleSystem>();
+        if (ps1 != null) ps1.Play();
+        if (ps2 != null) ps2.Play();
+        SpawnPowerUp();
+        m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
+        if (m_ui != null) m_ui.UpdateInvetory();
+    }
 
+    public PowerUpsHandler GetCurrentPlayerPowerUps()
+    {
+        if(m_currentPlayerPowerUps == null)
+        {
+            m_currentPlayerPowerUps = !Player_1.IsAI ? Player_1.GetComponent<PowerUpsHandler>() : Player_2.GetComponent<PowerUpsHandler>();
+        }
+        return m_currentPlayerPowerUps;
+    }
+
+    public void UpdateInvetory()
+    {
+        if (m_ui != null) m_ui.UpdateInvetory();
+    }
+
+    public void EndGame()
+    {
+        GameConainer.SetActive(false);
+        soundtrack.Stop();
+        if (m_ui != null) m_ui.ShowEndGame(GetWinner());
+    }
+
+    private bool GetWinner()
+    {
+        if(Player_1.GetComponent<Health>().health > 0)
+        {
+            if(Player_1.m_movememnt.enabled)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (Player_2.m_movememnt.enabled)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+>>>>>>> ui_fixes_2
     }
 }

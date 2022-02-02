@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float health = 100;
+    public float value = 100;
     public float flatDamageReduction = 0f;
     
     public void TakeDamage(float damage)
     {
-        if(damage >= health)
+        if(damage >= value)
         {
-            //kill
+            value = 0;
+            //GameMatchManager.Manager.EndGame();
         }
         else
         {
-            health -= CalculateDamage(damage);
+            value -= CalculateDamage(damage);
         }
     }
 
