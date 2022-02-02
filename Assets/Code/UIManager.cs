@@ -69,11 +69,12 @@ public class UIManager : MonoBehaviour
         }
 
     }
-}
     public void ReloadGameScene()
     {
-        Scene currentScene = SceneManager.GetActiveScene(); 
+        Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
 
 }
+
+
