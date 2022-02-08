@@ -147,4 +147,16 @@ public class GameMatchManager : MonoBehaviour
         m_ui.UpdateInvetory();
 
     }
+
+    public UIManager GetUIManager()
+    {
+        if (m_ui)
+        {
+            return m_ui;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
