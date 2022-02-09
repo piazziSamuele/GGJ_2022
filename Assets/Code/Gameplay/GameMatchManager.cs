@@ -101,10 +101,6 @@ public class GameMatchManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
-    {
-
-    }
 
     public IEnumerator MusicSwitchBlocker()
     {
@@ -157,6 +153,30 @@ public class GameMatchManager : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public void UpdateInvetory()
+    {
+        if (m_ui != null) m_ui.UpdateInvetory();
+    }
+
+    public void EndGame()
+    {
+        GameConainer.SetActive(false);
+        soundtrack.Stop();
+        if (m_ui != null) m_ui.ShowEndGame(GetWinner());
+    }
+
+    private bool GetWinner()
+    {
+        if (player.controlledCharacter.health.value > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
