@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIBrain : MonoBehaviour
 {
 
     public static AIBrain Brain;
     private UIManager m_ui;
+    [SerializeField]
+    private NavMeshAgent m_aiPathTracer;
+    private NavMeshPath m_aiPath;
 
     void Awake()
     {
@@ -93,6 +97,14 @@ public class AIBrain : MonoBehaviour
 
 
 
+    }
+
+    private void SetAIDestinationPosition()
+    {
+        Vector2 randomDest = Random.insideUnitCircle * 3.0f;
+        Vector3 fullDest = new Vector3(randomDest.x, 0, randomDest.y);
+        m_aiPathTracer.SetDestination(fullDest);
+        
     }
 
 }

@@ -20,6 +20,9 @@ public class GameMatchManager : MonoBehaviour
     private AudioSource soundtrack;
     [SerializeField]
     private GameObject GameConainer;
+    [Space]
+    [SerializeField]
+    private bool DebugAI;
 
     private bool blockSwitch = false;
     private UIManager m_ui;
@@ -34,7 +37,7 @@ public class GameMatchManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
-        GameConainer.SetActive(false); //TEMP
+        SetActiveGameContainer(DebugAI);
     }
 
     private void SetUpCharacterControllers()
