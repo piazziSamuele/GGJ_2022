@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbf99b6766a61840aa835dbd03c13eb, type: 3}
+  m_Name: Input Button Sprites
+  m_EditorClassIdentifier: 
+  controlSchemes:
+  - device: 0
+    sprites:
+    - {fileID: 21300000, guid: 8d4335c32ceaaa74a9c83b7fdeb4a330, type: 3}
+    - {fileID: 21300000, guid: 7f7e317ec00f686468ec3af3e4f74bcb, type: 3}
+    - {fileID: 21300000, guid: e83af1dc5791f4e448694450e8d8785b, type: 3}
+    - {fileID: 21300000, guid: 5e06547e6475e854489c6ccd7186a2fc, type: 3}
+  - device: 1
+    sprites:
+    - {fileID: 21300000, guid: 64877067c34a2e943ab1af50f7b329e8, type: 3}
+    - {fileID: 21300000, guid: 0998a7275a5026c47b386eca593f405d, type: 3}
+    - {fileID: 21300000, guid: f913d28d9cb6046419360fcab9513b6b, type: 3}
+    - {fileID: 21300000, guid: 977186f1f1e1aca4997dbb57aa9d4456, type: 3}
+  - device: 2
+    sprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "CharacterControls",
@@ -64,10 +64,10 @@
                 {
                     "name": "",
                     "id": "1135a676-824c-48a9-b8cd-8bdf9252dfbf",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
-                    "groups": "Gamepad",
+                    "groups": "XboxController",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -89,7 +89,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -100,7 +100,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -111,7 +111,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -122,7 +122,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -130,10 +130,10 @@
                 {
                     "name": "",
                     "id": "cf947323-2ff1-4361-a90e-32b9d6d4d829",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "XboxController",
                     "action": "Button 1",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -144,7 +144,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Button 1",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -152,10 +152,10 @@
                 {
                     "name": "",
                     "id": "3f3874d9-fc1f-4f15-b873-8b60fd02db4c",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "XboxController",
                     "action": "Button 2",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -166,7 +166,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Button 2",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -174,10 +174,10 @@
                 {
                     "name": "",
                     "id": "d7be4119-ff2a-4976-a572-86f6a7b7169e",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "XboxController",
                     "action": "Button 3",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -188,7 +188,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Button 3",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -196,10 +196,10 @@
                 {
                     "name": "",
                     "id": "a7385aac-0fa0-4831-b590-de6f47574a84",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "XboxController",
                     "action": "Button 4",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -210,7 +210,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse&Keyboard",
+                    "groups": "MouseAndKeyboard",
                     "action": "Button 4",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -231,8 +231,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "Gamepad",
-            "bindingGroup": "Gamepad",
+            "name": "XboxController",
+            "bindingGroup": "XboxController",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
@@ -242,8 +242,8 @@
             ]
         },
         {
-            "name": "Mouse&Keyboard",
-            "bindingGroup": "Mouse&Keyboard",
+            "name": "MouseAndKeyboard",
+            "bindingGroup": "MouseAndKeyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
