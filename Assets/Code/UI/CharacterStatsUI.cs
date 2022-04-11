@@ -5,15 +5,32 @@ using UnityEngine.UI;
 
 public class CharacterStatsUI : MonoBehaviour
 {
-    public Image Health;
-    public Image Stamina;
+    public Image healthSprite;
     [SerializeField] InputHandler player;
     [SerializeField] RectTransform m_UItransform;
+    [SerializeField] float health = 100f;
 
+    private void Start()
+    {
+        healthSprite.color = player.controlledCharacter.HealthBarColor;
+    }
+    private void OnEnable()
+    {
+        player.onControlledCharacterChanged += UpdateHealthUIColor;
+    }
+    private void OnDisable()
+    {
+        player.onControlledCharacterChanged -= UpdateHealthUIColor;
+    }
+
+    private void UpdateHealthUIColor(ControllableCharacter character)
+    {
+        healthSprite.color = character.HealthBarColor;
+    }
 
     void Update()
     {
         m_UItransform.position = Camera.main.WorldToScreenPoint(player.controlledCharacter.transform.position);
-        Health.fillAmount = player.controlledCharacter.health.value * 0.01f;
+        healthSprite.fillAmount = player.controlledCharacter.health.value * 0.01f;
     }
 }

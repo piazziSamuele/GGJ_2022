@@ -8,11 +8,6 @@ public class PlayerInputHandler : InputHandler
     PlayerInputActions playerInputActions;
     
     Vector3 currentMovementInput = new Vector3();
-    public void OnControlsChanged()
-    {
-        print("OnControlsChanged");
-
-    }
 
 
     private void Awake()
@@ -71,10 +66,12 @@ public class PlayerInputHandler : InputHandler
 
 public class InputHandler : MonoBehaviour
 {
+    public Action<ControllableCharacter> onControlledCharacterChanged;
     internal ControllableCharacter controlledCharacter;
     public virtual void SetControlledCharacter(ControllableCharacter character)
     {
         controlledCharacter = character;
+        onControlledCharacterChanged?.Invoke(character);
     }
 
     internal void PowerUpButtonPressed(int buttonPressed)

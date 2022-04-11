@@ -6,6 +6,9 @@ using System;
 public class ControllableCharacter : MonoBehaviour
 {
     [SerializeField] ParticleSystem switchParticleSystem;
+    [SerializeField] Color healthBarColor;
+
+    public Color HealthBarColor => healthBarColor;
     public CurrentPowerUps currentPowerUps;
     
     public Health health;
