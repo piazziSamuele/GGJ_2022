@@ -12,7 +12,6 @@ public class CharacterStatsUI : MonoBehaviour
 
     private void Start()
     {
-        healthSprite.color = player.controlledCharacter.HealthBarColor;
     }
     private void OnEnable()
     {
@@ -25,7 +24,6 @@ public class CharacterStatsUI : MonoBehaviour
 
     private void UpdateHealthUIColor(ControllableCharacter character)
     {
-        healthSprite.color = character.HealthBarColor;
     }
 
     void Update()

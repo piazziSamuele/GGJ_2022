@@ -22,6 +22,7 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
     {
         rifle.SetActive(false);
         StopCoroutine(fireRoutine);
+        coroutineIsRunning = false;
     }
 
     IEnumerator FireRoutine()

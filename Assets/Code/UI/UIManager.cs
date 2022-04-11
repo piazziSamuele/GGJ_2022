@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateInvetory()
     {
-        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetArray();
+        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetPowerUpDataArray();
         for (int i = 0; i < Inventory.Length; i++)
         {
             Inventory[i].EmptySlot();

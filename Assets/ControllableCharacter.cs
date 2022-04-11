@@ -6,9 +6,7 @@ using System;
 public class ControllableCharacter : MonoBehaviour
 {
     [SerializeField] ParticleSystem switchParticleSystem;
-    [SerializeField] Color healthBarColor;
 
-    public Color HealthBarColor => healthBarColor;
     public CurrentPowerUps currentPowerUps;
     
     public Health health;
@@ -21,6 +19,11 @@ public class ControllableCharacter : MonoBehaviour
 
     public void OnSwitch()
     {
+        foreach (GenericPowerUp powerUp in currentPowerUps.GetPowerUps())
+        {
+            powerUp.EndPowerUpAction();
+        }
+
         CurrentMovementInput = Vector3.zero;
         onSwitch?.Invoke();
         if (switchParticleSystem != null)

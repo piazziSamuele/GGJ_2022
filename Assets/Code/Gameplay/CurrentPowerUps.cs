@@ -41,8 +41,13 @@ public class CurrentPowerUps : ScriptableObject
 
     }
 
-    public PowerUpSO[] GetArray()
+    public PowerUpSO[] GetPowerUpDataArray()
     {
         return powerUpsData.ToArray();
     }
+    public GenericPowerUp[] GetPowerUps()
+    {
+        return powerUpsInstance.ToArray();
+    }
+
 }
