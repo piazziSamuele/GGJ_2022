@@ -2272,6 +2272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedCharacter: {fileID: 0}
   powerUpData: {fileID: 11400000, guid: 0ac2e03ce14b9b44d9c5246aa5c62524, type: 2}
+  totalPowerUpDuration: 100
+  percentChargePerUse: 5
   firePoint: {fileID: 172278138892441752}
   projectilePrefab: {fileID: 3068006704998852146, guid: fc64d72104a19f54fa381ce3d9201794, type: 3}
   rifle: {fileID: 7266840284350622329}

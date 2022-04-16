@@ -12,7 +12,9 @@ public class ShieldPowerUp : PowerUp<ShieldPowerUpSO>
     }
     public override void PerformPowerUpAction()
     {
-        if( playerHealth != null)
+        base.PerformPowerUpAction();
+        currentCharge -= (percentChargePerUse * 100) / totalPowerUpDuration;
+        if ( playerHealth != null)
         {
             playerHealth.AddFlatDamageReduction(powerUpData.meleeDamageReductionValue);
         }

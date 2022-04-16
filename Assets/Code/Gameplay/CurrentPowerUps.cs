@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class CurrentPowerUps : ScriptableObject
 {
+    public event Action<PowerUpSO> onPowerUpPickUp;
     public void ClearList()
     {
         powerUpsData.Clear();
@@ -23,6 +25,7 @@ public class CurrentPowerUps : ScriptableObject
         powerUpsData.Add(powerUp.PowerUpData);
         powerUpInstance = Instantiate(powerUp, characterTransform);
         powerUpsInstance.Add(powerUpInstance);
+        onPowerUpPickUp?.Invoke(powerUp.PowerUpData);
         return true;
     }
     public void ActivatePowerUp(int buttonNumber)

@@ -5,6 +5,14 @@ using UnityEngine;
 public class PowerUp<T> : GenericPowerUp where T : PowerUpSO
 {
     public T powerUpData;
+
+    [Tooltip("power up duration in seconds")]
+    [SerializeField] internal float totalPowerUpDuration = 100f;
+    [Tooltip("percent of the total charge consumed for each use")]
+    [Header("Ranged weapons consume one charge for each projectile")]
+    [SerializeField] internal float percentChargePerUse = 10f;
+    internal float currentCharge;
+        
     public override PowerUpSO PowerUpData => powerUpData;
     public override void SetPowerUpSO(PowerUpSO powerUp)
     {
@@ -18,6 +26,19 @@ public class PowerUp<T> : GenericPowerUp where T : PowerUpSO
     {
         assignedCharacter.onSwitch -= StopAllCoroutines;
 
+    }
+    public override void PerformPowerUpAction()
+    {
+        base.PerformPowerUpAction();
+        if(currentCharge <= 0f) { return; }
+    }
+    private void Awake()
+    {
+        currentCharge = totalPowerUpDuration;
+    }
+    private void Update()
+    {
+        currentCharge -= Time.deltaTime;
     }
 
 }
