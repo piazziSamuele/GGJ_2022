@@ -10,7 +10,7 @@ public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
     public override void PerformPowerUpAction()
     {
         base.PerformPowerUpAction();
-        currentCharge -= (percentChargePerUse * 100) / totalPowerUpDuration;
+        currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
         if (CanAttack())
         {
             weaponObject.gameObject.SetActive(true);
@@ -41,4 +41,5 @@ public class MeleeAttack : PowerUp<MeleeWeaponPowerUpSO>
         }
 
     }
+
 }

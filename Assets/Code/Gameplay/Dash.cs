@@ -29,7 +29,7 @@ public class Dash : PowerUp<DashPowerUpSO>
     private void PerformDash()
     {
         dashCoroutine = StartCoroutine(DashCoroutine());
-        currentCharge -= (percentChargePerUse * 100) / totalPowerUpDuration;
+        currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
     }
     IEnumerator DashCoroutine()
     {
@@ -42,8 +42,9 @@ public class Dash : PowerUp<DashPowerUpSO>
         }
 
     }
-    void Update()
+    public override void Update()
     {
+        base.Update();
         dashTimer += Time.deltaTime;
     }
 }

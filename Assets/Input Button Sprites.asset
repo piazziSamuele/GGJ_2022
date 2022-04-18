@@ -21,10 +21,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5e06547e6475e854489c6ccd7186a2fc, type: 3}
   - device: 1
     sprites:
-    - {fileID: 21300000, guid: 64877067c34a2e943ab1af50f7b329e8, type: 3}
-    - {fileID: 21300000, guid: 0998a7275a5026c47b386eca593f405d, type: 3}
-    - {fileID: 21300000, guid: f913d28d9cb6046419360fcab9513b6b, type: 3}
-    - {fileID: 21300000, guid: 977186f1f1e1aca4997dbb57aa9d4456, type: 3}
+    - {fileID: 21300000, guid: 79bcc79e3f0518848a573dea19223924, type: 3}
+    - {fileID: 21300000, guid: 08ca16ca172fe034e9da435d28e3c9fd, type: 3}
+    - {fileID: 21300000, guid: 1ac4ed451c97a6a4bac0d9b2da8308b1, type: 3}
+    - {fileID: 21300000, guid: d5b788d8fef81bd4a9b802492901289b, type: 3}
   - device: 2
     sprites:
     - {fileID: 0}

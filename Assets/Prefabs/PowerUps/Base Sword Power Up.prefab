@@ -123,7 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedCharacter: {fileID: 0}
   powerUpData: {fileID: 11400000, guid: 35668afceb9b6aa4db5cc3c5ad08a641, type: 2}
-  totalPowerUpDuration: 100
+  currentCharge: 0
+  debug: 0
+  totalPowerUpDuration: 15
   percentChargePerUse: 10
   weaponObject: {fileID: 1008556233049764324}
   animator: {fileID: 797129323354421636}

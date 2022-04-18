@@ -34,12 +34,8 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
             Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
             projectile.speed = powerUpData.projectileSpeed;
             projectile.damage = powerUpData.damagePerBullet;
-            currentCharge -= (percentChargePerUse * 100) / totalPowerUpDuration;
+            currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
             yield return new WaitForSeconds(powerUpData.fireRate);
         }
     }
-
-
-
-
 }

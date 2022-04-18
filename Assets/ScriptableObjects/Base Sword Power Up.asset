@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669df85c44886664cbe14fbf7ddc3196, type: 3}
   m_Name: Base Sword Power Up
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1a454b0a487bd7d429750adff8e8fb8e, type: 3}
+  icon: {fileID: 21300000, guid: bc9fdbeb3048eb9479d32a7050f09980, type: 3}
   damage: 5

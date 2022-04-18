@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562f1b7c0e1760a4f8d0afabbb0b9b32, type: 3}
   m_Name: Base Dash Power Up
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 10227c648315c4648a7f668e9fc27c66, type: 3}
+  icon: {fileID: 21300000, guid: 119a9b3550a883346ac0e5562ac62115, type: 3}
   dashDistance: 2
   dashSpeed: 40
   dashCooldown: 1.5

@@ -13,12 +13,20 @@ public class ShieldPowerUp : PowerUp<ShieldPowerUpSO>
     public override void PerformPowerUpAction()
     {
         base.PerformPowerUpAction();
-        currentCharge -= (percentChargePerUse * 100) / totalPowerUpDuration;
         if ( playerHealth != null)
         {
             playerHealth.AddFlatDamageReduction(powerUpData.meleeDamageReductionValue);
         }
         shield.SetActive(true);
+
+    }
+    public override void Update()
+    {
+        base.Update();
+        if (shield.activeSelf)
+        {
+            currentCharge -= this.percentChargePerUse * Time.deltaTime;
+        }
 
     }
     public override void EndPowerUpAction()

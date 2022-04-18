@@ -15,6 +15,7 @@ public class ControllableCharacter : MonoBehaviour
     public event Action<int> powerUpButtonPressed;
     public event Action<int> powerUpButtonReleased;
     public event Action onSwitch;
+    
 
 
     public void OnSwitch()
@@ -28,6 +29,11 @@ public class ControllableCharacter : MonoBehaviour
         onSwitch?.Invoke();
         if (switchParticleSystem != null)
         switchParticleSystem.Play();
+    }
+
+    public void OnPowerUpRemoved()
+    {
+
     }
 
     public void HandleAbilityButtonPressed(int abilityNumber)

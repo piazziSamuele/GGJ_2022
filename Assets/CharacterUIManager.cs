@@ -8,7 +8,7 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField] ControllableCharacter opponent;
 
     [SerializeField] List<WorldUIButton> buttons;
-    private List<WorldUIButton> activeButtons = new List<WorldUIButton>();
+    public WorldUIButton[] _activeButtons = new WorldUIButton[4];
 
     [SerializeField] Quaternion defaultRotation;
     [SerializeField] float radius;
@@ -34,12 +34,18 @@ public class CharacterUIManager : MonoBehaviour
 
     private void OnPowerUpPickUp(PowerUpSO powerUp)
     {
-        int count = Mathf.Max(0, activeButtons.Count);
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            if(_activeButtons[i] == null)
+            {
+                buttons[i].powerUpUI.gameObject.SetActive(true);
+                buttons[i].powerUpUI.powerUp = powerUp;
+                buttons[i].SetPowerUPImage(powerUp.icon);
+                _activeButtons[i] = buttons[i];
+                break;
 
-        buttons[count].gameObject.SetActive(true);
-        buttons[count].powerUpUIElement.gameObject.SetActive(true);
-        buttons[count].SetPowerUPImage(powerUp.icon);
-        activeButtons.Add(buttons[count]);
+            }
+        }
     }
 
     private void Update()
@@ -47,24 +53,43 @@ public class CharacterUIManager : MonoBehaviour
         this.transform.position = character.transform.position;
         UpdateRotation();
         ButtonsDistribution();
+        UpdatePowerUpLifetimes();
 
+    }
+    private void UpdatePowerUpLifetimes()
+    {
+        for (int i = 0; i < _activeButtons.Length; i++)
+        {
+            if (_activeButtons[i] == null) continue;
+            _activeButtons[i].powerUpUI.lifeTime =
+    Mathf.Lerp(1, 0, character.currentPowerUps.GetPowerUpLifePercentage(_activeButtons[i].powerUpUI.powerUp) / 100);
+            if (currentPowerUps.GetPowerUpLifePercentage(_activeButtons[i].powerUpUI.powerUp) <= 0f)
+            {
+                _activeButtons[i].SetPowerUPImage(null);
+                _activeButtons[i].powerUpUI.powerUp = null;
+                _activeButtons[i].powerUpUI.gameObject.SetActive(false);
+                _activeButtons[i] = null;
+            }
+
+        }
+        foreach (WorldUIButton button in _activeButtons)
+        {
+        }
     }
 
     private void ButtonsDistribution()
     {
-        if (activeButtons == null || activeButtons.Count == 0) { return; }
         minAngle = minRange * 360 * Mathf.PI / 180;
         maxAngle = maxRange * 360 * Mathf.PI / 180;
         angle = 360 * maxRange;
-        for (int i = 0; i < activeButtons.Count; i++)
+        for (int i = 0; i < buttons.Count; i++)
         {
-            angle = activeButtons.Count == 1 ? -((maxAngle - minAngle) / 2) - (Mathf.PI / 2)
-                : ((maxAngle - minAngle) / (activeButtons.Count - 1) * i) -
-                ((maxAngle - minAngle) / (activeButtons.Count / 2)) - (Mathf.PI / 2);
+            angle = 
+                //buttons.Count == 1 ? -((maxAngle - minAngle) / 2) - (Mathf.PI / 2) :
+                 ((maxAngle - minAngle) / (buttons.Count - 1) * i) -
+                ((maxAngle - minAngle) / (buttons.Count / 2)) - (Mathf.PI / 2);
 
-            activeButtons[i].transform.localPosition =  GetPosition(radius);
-            activeButtons[i].powerUpUIElement.transform.localPosition = GetPosition(radius + 1.5f);
-
+            buttons[i].transform.localPosition =  GetPosition(radius);
         }
     }
 
