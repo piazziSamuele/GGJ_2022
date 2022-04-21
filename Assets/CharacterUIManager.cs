@@ -38,6 +38,7 @@ public class CharacterUIManager : MonoBehaviour
         {
             if(_activeButtons[i] == null)
             {
+
                 buttons[i].powerUpUI.gameObject.SetActive(true);
                 buttons[i].powerUpUI.powerUp = powerUp;
                 buttons[i].SetPowerUPImage(powerUp.icon);
@@ -69,11 +70,9 @@ public class CharacterUIManager : MonoBehaviour
                 _activeButtons[i].powerUpUI.powerUp = null;
                 _activeButtons[i].powerUpUI.gameObject.SetActive(false);
                 _activeButtons[i] = null;
+                print("bobby");
             }
 
-        }
-        foreach (WorldUIButton button in _activeButtons)
-        {
         }
     }
 
@@ -114,7 +113,7 @@ public class CharacterUIManager : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Lerp(defaultRotation, lookRotation,
     Mathf.Lerp(0, 1,
-   Mathf.Max(0,1 - (distance/5))));
+   Mathf.Max(0,1 - (distance/10))));
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 9f * Time.deltaTime);
 

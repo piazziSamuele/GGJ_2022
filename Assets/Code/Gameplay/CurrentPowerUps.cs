@@ -13,7 +13,7 @@ public class CurrentPowerUps : ScriptableObject
         powerUpsData.Clear();
     }
     [SerializeField] List<PowerUpSO> powerUpsData = new List<PowerUpSO>();
-    [SerializeField] GenericPowerUp[] powerUps = new GenericPowerUp[4];
+    [SerializeField] GenericPowerUp[] instantatedPowerUps = new GenericPowerUp[4];
 
 
     public bool TryPickUp(GenericPowerUp powerUp,Transform characterTransform, out GenericPowerUp powerUpInstance)
@@ -23,11 +23,11 @@ public class CurrentPowerUps : ScriptableObject
         if (powerUpsData.Count >= 4) return false;
         powerUpsData.Add(powerUp.PowerUpData);
         powerUpInstance = Instantiate(powerUp, characterTransform);
-        for (int i = 0; i < powerUps.Length; i++)
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
         {
-            if(powerUps[i] == null)
+            if(instantatedPowerUps[i] == null)
             {
-                powerUps[i] = powerUpInstance;
+                instantatedPowerUps[i] = powerUpInstance;
                 break;
             }
         }
@@ -36,11 +36,11 @@ public class CurrentPowerUps : ScriptableObject
     }
     public void RemovePowerUp(PowerUpSO powerUp)
     {
-        for (int i = 0; i < powerUps.Length; i++)
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
         {
-            if (powerUps[i] != null && powerUps[i].PowerUpData == powerUp)
+            if (instantatedPowerUps[i] != null && instantatedPowerUps[i].PowerUpData == powerUp)
             {
-                powerUps[i] = null;
+                instantatedPowerUps[i] = null;
             }
 
         }
@@ -51,38 +51,30 @@ public class CurrentPowerUps : ScriptableObject
     }
     public void ActivatePowerUp(int buttonNumber)
     {
-        if (powerUps.Length > buttonNumber && powerUps[buttonNumber] != null)
+        if (instantatedPowerUps.Length > buttonNumber && instantatedPowerUps[buttonNumber] != null)
         {
-            powerUps[buttonNumber].PerformPowerUpAction();
+            instantatedPowerUps[buttonNumber].PerformPowerUpAction();
         }
     }
     public void ReleasePowerUp(int buttonNumber)
     {
-        if (powerUps.Length > buttonNumber && powerUps[buttonNumber] != null)
+        if (instantatedPowerUps.Length > buttonNumber && instantatedPowerUps[buttonNumber] != null)
         {
-            powerUps[buttonNumber].EndPowerUpAction();
+            instantatedPowerUps[buttonNumber].EndPowerUpAction();
         }
     }
 
     public float GetPowerUpLifePercentage(PowerUpSO powerUp)
     {
-        if (powerUp == null) return 0f;
-        int t = 0;
-        for (int i = 0; i < powerUps.Length; i++)
+        float v = 0;
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
         {
-            if(powerUps[i] != null && powerUps[i].PowerUpData == powerUp)
+            if(instantatedPowerUps[i] != null && instantatedPowerUps[i].PowerUpData == powerUp)
             {
-                t = i;
+                v = instantatedPowerUps[i].GetChargePercent();
             }
         }
-        float v = 0f;
-        if (t >= 0 && t <= powerUps.Length)
-        {
-            if(powerUps[t] != null)
-            v = powerUps[t].GetChargePercent();
-        }
         return v;
-        
     }
 
     public PowerUpSO[] GetPowerUpDataArray()
@@ -91,7 +83,7 @@ public class CurrentPowerUps : ScriptableObject
     }
     public GenericPowerUp[] GetPowerUps()
     {
-        return powerUps;
+        return instantatedPowerUps;
     }
 
 }
