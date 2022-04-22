@@ -38,7 +38,7 @@ public class PowerUpsHandler : MonoBehaviour
             GenericPowerUp p = pickUp.powerUpPrefab;
             if (character.currentPowerUps.TryPickUp(p, transform, out GenericPowerUp equipablePowerUp))
             {
-                uiManager.UpdateInvetory();
+                //uiManager.UpdateInvetory();
                 equipablePowerUp.assignedCharacter = this.character;
                 equipablePowerUp.SubscribeToEvents();
                 equipablePowerUp.onPowerUpLifetimeEnd += OnPowerUPLifetimeEnd;

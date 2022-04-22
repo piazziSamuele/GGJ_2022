@@ -86,10 +86,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1135a676-824c-48a9-b8cd-8bdf9252dfbf"",
-                    ""path"": ""<XInputController>/leftStick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
-                    ""groups"": ""XboxController"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -152,10 +152,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cf947323-2ff1-4361-a90e-32b9d6d4d829"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XboxController"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Button 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -174,10 +174,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3f3874d9-fc1f-4f15-b873-8b60fd02db4c"",
-                    ""path"": ""<XInputController>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XboxController"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Button 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -196,10 +196,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d7be4119-ff2a-4976-a572-86f6a7b7169e"",
-                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XboxController"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Button 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -218,10 +218,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a7385aac-0fa0-4831-b590-de6f47574a84"",
-                    ""path"": ""<XInputController>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XboxController"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Button 4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -253,8 +253,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""XboxController"",
-            ""bindingGroup"": ""XboxController"",
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
@@ -417,13 +417,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
-    private int m_XboxControllerSchemeIndex = -1;
-    public InputControlScheme XboxControllerScheme
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
     {
         get
         {
-            if (m_XboxControllerSchemeIndex == -1) m_XboxControllerSchemeIndex = asset.FindControlSchemeIndex("XboxController");
-            return asset.controlSchemes[m_XboxControllerSchemeIndex];
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
     private int m_MouseAndKeyboardSchemeIndex = -1;

@@ -55,20 +55,20 @@ public class UIManager : MonoBehaviour
         GameMatchManager.Manager.PlayAudioTrack();
     }
 
-    public void UpdateInvetory()
-    {
-        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetPowerUpDataArray();
-        for (int i = 0; i < Inventory.Length; i++)
-        {
-            Inventory[i].EmptySlot();
-        }
+    //public void UpdateInvetory()
+    //{
+    //    PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetPowerUpDataArray();
+    //    for (int i = 0; i < Inventory.Length; i++)
+    //    {
+    //        Inventory[i].EmptySlot();
+    //    }
 
-        for (int i = 0; i < powerups.Length; i++)
-        {
-            Inventory[i].AssignItemIcon(powerups[i].icon);
-        }
+    //    for (int i = 0; i < powerups.Length; i++)
+    //    {
+    //        Inventory[i].AssignItemIcon(powerups[i].icon);
+    //    }
 
-    }
+    //}
     public void ReloadGameScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();

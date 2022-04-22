@@ -14,31 +14,30 @@ public class UIInputButtons : MonoBehaviour
     [SerializeField] WorldUIButton buttonWest;
 
     private Sprite[] updatedSprites = new Sprite[4];
-    public PlayerInput playerInput;
     private string currentControlScheme = "a";
     private void Awake()
     {
-        AssignButtonSprite();
+        //AssignButtonSprite();
     }
     public void OnControlsChanged()
     {
-        AssignButtonSprite();
+        //AssignButtonSprite();
 
     }
 
-    private void AssignButtonSprite()
-    {
-        if (playerInput.currentControlScheme != currentControlScheme)
-        {
-            currentControlScheme = playerInput.currentControlScheme;
-            updatedSprites = inputButtonSprites.GetSprites(currentControlScheme);
-            if (updatedSprites != null)
-            {
-                buttonSouth.SetButtonSprite(updatedSprites[0]);
-                buttonEast.SetButtonSprite(updatedSprites[1]);
-                buttonNorth.SetButtonSprite(updatedSprites[2]);
-                buttonWest.SetButtonSprite(updatedSprites[3]);
-            }
-        }
-    }
+    //private void AssignButtonSprite()
+    //{
+    //    if (playerInput.currentControlScheme != currentControlScheme)
+    //    {
+    //        currentControlScheme = playerInput.currentControlScheme;
+    //        updatedSprites = inputButtonSprites.GetSprites(currentControlScheme);
+    //        if (updatedSprites != null)
+    //        {
+    //            buttonSouth.SetButtonSprite(updatedSprites[0]);
+    //            buttonEast.SetButtonSprite(updatedSprites[1]);
+    //            buttonNorth.SetButtonSprite(updatedSprites[2]);
+    //            buttonWest.SetButtonSprite(updatedSprites[3]);
+    //        }
+    //    }
+    //}
 }

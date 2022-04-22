@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameMatchManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class GameMatchManager : MonoBehaviour
     public float threshlod;
     public int index = 0;
     public float TimerBlockValue = .13f;
-    public InputHandler player,ai;
+    public GameObject playerPrefab;
+    private InputHandler p1, p2;
     public GameMatchData matchData;
     public ControllableCharacter character_1, character_2;
 
@@ -29,6 +31,7 @@ public class GameMatchManager : MonoBehaviour
 
     void Awake()
     {
+        SpawnPlayers();
         SetUpCharacterControllers();
         if(Manager == null)
         {
@@ -40,10 +43,16 @@ public class GameMatchManager : MonoBehaviour
         SetActiveGameContainer(DebugAI);
     }
 
+    private void SpawnPlayers()
+    {
+        p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).GetComponent<InputHandler>();
+        p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
+
+    }
     private void SetUpCharacterControllers()
     {
-        player.controlledCharacter = character_1;
-        ai.controlledCharacter = character_2;
+        p1.controlledCharacter = character_1;
+        p2.controlledCharacter = character_2;
     }
 
     public void RegisterUIManager(UIManager manager)
@@ -121,10 +130,10 @@ public class GameMatchManager : MonoBehaviour
         GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
     }
 
-    public CurrentPowerUps GetCurrentPlayerPowerUps()
-    {
-        return player.controlledCharacter.currentPowerUps;
-    }
+    //public CurrentPowerUps GetCurrentPlayerPowerUps()
+    //{
+    //    return player.controlledCharacter.currentPowerUps;
+    //}
 
     private void SpawnAllPowerUps()
     {
@@ -140,10 +149,10 @@ public class GameMatchManager : MonoBehaviour
     {
         character_1.OnSwitch();
         character_2.OnSwitch();
-        var v = player.controlledCharacter;
-        player.controlledCharacter = ai.controlledCharacter;
-        ai.controlledCharacter = v;
-        m_ui.UpdateInvetory();
+        var v = p1.controlledCharacter;
+        p1.controlledCharacter = p2.controlledCharacter;
+        p2.controlledCharacter = v;
+        //m_ui.UpdateInvetory();
 
     }
 
@@ -159,10 +168,10 @@ public class GameMatchManager : MonoBehaviour
         }
     }
 
-    public void UpdateInvetory()
-    {
-        if (m_ui != null) m_ui.UpdateInvetory();
-    }
+    //public void UpdateInvetory()
+    //{
+    //    if (m_ui != null) m_ui.UpdateInvetory();
+    //}
 
     public void EndGame()
     {
@@ -173,7 +182,7 @@ public class GameMatchManager : MonoBehaviour
 
     private bool GetWinner()
     {
-        if (player.controlledCharacter.health.value > 0)
+        if (p1.controlledCharacter.health.value > 0)
         {
             return true;
         }
