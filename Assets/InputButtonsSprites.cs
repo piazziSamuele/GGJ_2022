@@ -24,11 +24,11 @@ public class InputButtonsSprites : ScriptableObject
 [System.Serializable]
 public class Sprites
 {
-    public ControlDevices device;
+    public ControlDevice device;
     public Sprite[] sprites = new Sprite[4];
 }
 
-public enum ControlDevices
+public enum ControlDevice
 {
     MouseAndKeyboard,
     XboxController,

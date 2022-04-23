@@ -6,6 +6,7 @@ public class CharacterUIManager : MonoBehaviour
 {
     [SerializeField] ControllableCharacter character;
     [SerializeField] ControllableCharacter opponent;
+    [SerializeField] UIInputButtons inputButtons;
 
     [SerializeField] List<WorldUIButton> buttons;
     public WorldUIButton[] _activeButtons = new WorldUIButton[4];
@@ -25,11 +26,12 @@ public class CharacterUIManager : MonoBehaviour
     private void OnEnable()
     {
         currentPowerUps.onPowerUpPickUp += OnPowerUpPickUp;
+        character.onControlDeviceChange += inputButtons.AssignButtonSprite;
     }
     private void OnDisable()
     {
         currentPowerUps.onPowerUpPickUp -= OnPowerUpPickUp;
-
+        character.onControlDeviceChange -= inputButtons.AssignButtonSprite;
     }
 
     private void OnPowerUpPickUp(PowerUpSO powerUp)

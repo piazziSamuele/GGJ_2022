@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float value = 100;
     public float flatDamageReduction = 0f;
+    [SerializeField] Lifebar lifebar;
     
     public void TakeDamage(float damage)
     {

@@ -15,29 +15,24 @@ public class UIInputButtons : MonoBehaviour
 
     private Sprite[] updatedSprites = new Sprite[4];
     private string currentControlScheme = "a";
-    private void Awake()
+    private void OnEnable()
     {
-        //AssignButtonSprite();
+        
     }
-    public void OnControlsChanged()
+    private void OnDisable()
     {
-        //AssignButtonSprite();
-
+        
     }
 
-    //private void AssignButtonSprite()
-    //{
-    //    if (playerInput.currentControlScheme != currentControlScheme)
-    //    {
-    //        currentControlScheme = playerInput.currentControlScheme;
-    //        updatedSprites = inputButtonSprites.GetSprites(currentControlScheme);
-    //        if (updatedSprites != null)
-    //        {
-    //            buttonSouth.SetButtonSprite(updatedSprites[0]);
-    //            buttonEast.SetButtonSprite(updatedSprites[1]);
-    //            buttonNorth.SetButtonSprite(updatedSprites[2]);
-    //            buttonWest.SetButtonSprite(updatedSprites[3]);
-    //        }
-    //    }
-    //}
+    public void AssignButtonSprite(ControlDevice device)
+    {
+        updatedSprites = inputButtonSprites.GetSprites(currentControlScheme);
+        if (updatedSprites != null)
+        {
+            buttonSouth.SetButtonSprite(updatedSprites[0]);
+            buttonEast.SetButtonSprite(updatedSprites[1]);
+            buttonNorth.SetButtonSprite(updatedSprites[2]);
+            buttonWest.SetButtonSprite(updatedSprites[3]);
+        }
+    }
 }

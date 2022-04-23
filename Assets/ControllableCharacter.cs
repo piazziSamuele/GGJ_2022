@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class ControllableCharacter : MonoBehaviour
 {
     [SerializeField] ParticleSystem switchParticleSystem;
+    public event Action<ControlDevice> onControlDeviceChange;
 
     public CurrentPowerUps currentPowerUps;
     
@@ -16,7 +18,10 @@ public class ControllableCharacter : MonoBehaviour
     public event Action<int> powerUpButtonReleased;
     public event Action onSwitch;
     
-
+    public void OnControlDeviceChange(ControlDevice device)
+    {
+        onControlDeviceChange?.Invoke(device);
+    }
 
     public void OnSwitch()
     {

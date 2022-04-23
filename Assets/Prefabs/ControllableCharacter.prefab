@@ -4995,6 +4995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 100
   flatDamageReduction: 0
+  lifebar: {fileID: 0}
 --- !u!114 &4860906090620168740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5010,7 +5011,6 @@ MonoBehaviour:
   character: {fileID: 3335482911408699136}
   speed: 5
   turnSmoothTime: 0.1
-  gravity: {x: 0, y: -9.8, z: 0}
 --- !u!114 &3937598890216367872
 MonoBehaviour:
   m_ObjectHideFlags: 0
