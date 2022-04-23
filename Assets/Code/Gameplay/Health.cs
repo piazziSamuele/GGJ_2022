@@ -5,9 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float value = 100;
+    public float startHealth = 100;
     public float flatDamageReduction = 0f;
-    [SerializeField] Lifebar lifebar;
-    
+    public float healthPercet;
+
+    private void Awake()
+    {
+        value = startHealth;
+    }
     public void TakeDamage(float damage)
     {
         if(damage >= value)
@@ -20,7 +25,14 @@ public class Health : MonoBehaviour
             value -= CalculateDamage(damage);
         }
     }
-
+    private void Update()
+    {
+        healthPercet = GetHealthPercent();
+    }
+    public float GetHealthPercent()
+    {
+        return value * 100 / startHealth;
+    }
     private float CalculateDamage(float damage)
     {
         return damage - flatDamageReduction;

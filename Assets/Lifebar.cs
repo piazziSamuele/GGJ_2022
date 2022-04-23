@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Lifebar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] MeshRenderer _renderer;
+    public void UpdateColor(Color color)
     {
-        
+        _renderer.material.SetColor("Color", color);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void UpdateLife(float lifePercent)
     {
-        
+        _renderer.material.SetFloat("life", lifePercent / 100);
+
     }
 }

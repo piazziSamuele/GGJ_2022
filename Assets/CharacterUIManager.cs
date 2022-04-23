@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[ExecuteInEditMode]
+
 public class CharacterUIManager : MonoBehaviour
 {
     [SerializeField] ControllableCharacter character;
     [SerializeField] ControllableCharacter opponent;
     [SerializeField] UIInputButtons inputButtons;
+    [SerializeField] Lifebar lifebar;
 
     [SerializeField] List<WorldUIButton> buttons;
     public WorldUIButton[] _activeButtons = new WorldUIButton[4];
@@ -53,6 +54,7 @@ public class CharacterUIManager : MonoBehaviour
 
     private void Update()
     {
+        this.lifebar.UpdateLife(character.health.GetHealthPercent());
         this.transform.position = character.transform.position;
         UpdateRotation();
         ButtonsDistribution();
