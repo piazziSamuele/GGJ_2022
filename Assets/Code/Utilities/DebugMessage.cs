@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DebugMessage : MonoBehaviour
 {
     private Text m_textComponent;
-    private const float SHOW_TIMER_LENTGH = 1.5f;
+    private const float SHOW_TIMER_LENTGH = 2.5f;
     // Start is called before the first frame update
     void Start()
     {
