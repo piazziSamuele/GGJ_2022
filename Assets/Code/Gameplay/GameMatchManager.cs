@@ -59,7 +59,7 @@ public class GameMatchManager : MonoBehaviour
     public void PlayAudioTrack()
     {
         soundtrack.Play();
-        SpawnAllPowerUps();
+        SpawnPowerUp();
     }
 
     public bool GetAudioSourcePlayingValue()
@@ -116,9 +116,26 @@ public class GameMatchManager : MonoBehaviour
 
     private void SpawnPowerUp()
     {
-        Vector3 propPosition = Random.insideUnitSphere * 10f;
-        propPosition.y = 1;
-        GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length-1)], propPosition, Quaternion.identity, GameConainer.transform);
+        Vector3 propPosition = Random.insideUnitCircle * 30f;
+        propPosition.z = propPosition.y;
+        propPosition.y = 8;
+        RaycastHit hit;
+        if ( Physics.Raycast(propPosition,  Vector3.down , out hit, 20.0f ) )
+        {
+            if ( hit.collider.gameObject.tag != "GameArena" ) // temporary tag
+            {
+                InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA NOT FOUND", 2);
+                return;
+            }
+
+            InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA FOUND");
+            propPosition.y = 1;
+            GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], propPosition, Quaternion.identity, GameConainer.transform);
+            InGameDebugConsole.IGDebugConsole.ShowMessage(string.Format("Spawned FOUND {0}", newPowerUp.name));
+
+        }
+
+
     }
 
     public CurrentPowerUps GetCurrentPlayerPowerUps()
@@ -126,14 +143,14 @@ public class GameMatchManager : MonoBehaviour
         return player.controlledCharacter.currentPowerUps;
     }
 
-    private void SpawnAllPowerUps()
+    private void SpawnAllPowerUps() // test only method
     {
-        foreach(GameObject prop in PowerUps)
-        {
-            Vector3 propPosition = Random.insideUnitSphere * 10f;
-            propPosition.y = 1;
-            GameObject newPowerUp = Instantiate(prop, propPosition, Quaternion.identity, GameConainer.transform);
-        }
+        //foreach(GameObject prop in PowerUps)
+        //{
+        //    Vector3 propPosition = Random.insideUnitSphere * 10f;
+        //    propPosition.y = 1;
+        //    GameObject newPowerUp = Instantiate(prop, propPosition, Quaternion.identity, GameConainer.transform);
+        //}
     }
 
     private void SwitchCurse()
@@ -144,6 +161,7 @@ public class GameMatchManager : MonoBehaviour
         player.controlledCharacter = ai.controlledCharacter;
         ai.controlledCharacter = v;
         m_ui.UpdateInvetory();
+        SpawnPowerUp();
 
     }
 
