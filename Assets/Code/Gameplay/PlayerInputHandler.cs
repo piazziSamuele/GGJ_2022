@@ -32,9 +32,13 @@ public class PlayerInputHandler : InputHandler
         //Movement
         playerInputActions.CharacterControls.Movement.performed += RegisterMovementInput;
         //adding this just to be sure it cancel movement when leaving input
-        //playerInputActions.CharacterControls.Movement.canceled += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
+        playerInputActions.CharacterControls.Movement.canceled += RegisterMovementInput;
     }
-    
+    public void OnInputDeviceChange()
+    {
+        //ControlDevice device = playerInput.devices[0].name == 
+        //controlledCharacter.OnControlDeviceChange(device);
+    }
 
 
     private void RegisterMovementInput(InputAction.CallbackContext ctx)

@@ -12,16 +12,17 @@ public class UIInputButtons : MonoBehaviour
     [SerializeField] WorldUIButton buttonEast;
     [SerializeField] WorldUIButton buttonNorth;
     [SerializeField] WorldUIButton buttonWest;
+    [SerializeField] ControllableCharacter character;
 
     private Sprite[] updatedSprites = new Sprite[4];
     private string currentControlScheme = "a";
     private void OnEnable()
     {
-        
+        character.onControlDeviceChange += AssignButtonSprite;
     }
     private void OnDisable()
     {
-        
+        character.onControlDeviceChange -= AssignButtonSprite;
     }
 
     public void AssignButtonSprite(ControlDevice device)

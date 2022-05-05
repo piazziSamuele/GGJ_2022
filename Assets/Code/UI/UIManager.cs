@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject  WinObj, LoseObj, MenuObj, GamePanel;
+    public GameObject WinObj, LoseObj, MenuObj, GamePanel, ConnectControllerObj;
     public Text SwitchHighlight, TimeText;
     public InvetoryItemUIView[] Inventory = new InvetoryItemUIView[4];
     public void Start()

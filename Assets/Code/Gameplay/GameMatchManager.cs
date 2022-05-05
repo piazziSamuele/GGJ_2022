@@ -29,10 +29,9 @@ public class GameMatchManager : MonoBehaviour
     private bool blockSwitch = false;
     private UIManager m_ui;
 
+    
     void Awake()
     {
-        SpawnPlayers();
-        SetUpCharacterControllers();
         if(Manager == null)
         {
             Manager = this;
@@ -43,12 +42,31 @@ public class GameMatchManager : MonoBehaviour
         SetActiveGameContainer(DebugAI);
     }
 
+    public void StartGame()
+    {
+        //check connected controllers
+        //if not enough controllers open connect controller ui
+        //when controller is connected spawn players 
+        // start game
+        if(Gamepad.all.Count < 2)
+        {
+            m_ui.ConnectControllerObj.SetActive(true);
+        }
+        else
+        {
+            SpawnPlayers();
+            SetUpCharacterControllers();
+
+        }
+    }
     private void SpawnPlayers()
     {
-        p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).GetComponent<InputHandler>();
-        p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
+        p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
+        p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[2]).GetComponent<InputHandler>();
 
     }
+
+
     private void SetUpCharacterControllers()
     {
         p1.controlledCharacter = character_1;
