@@ -80,6 +80,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c8f3678-d497-44de-8698-65d3575ce278"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,6 +311,45 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Debug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f95fb826-0712-4c74-adaf-75858b5a3506"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""cb4446d4-3ba8-4357-9b84-eca0eb88f0f3"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""32098743-675e-4ba0-802f-432ec5124d93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cea9f450-1431-43fb-8d74-bba6e0a8806b"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -349,6 +397,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_CharacterControls_Button3 = m_CharacterControls.FindAction("Button 3", throwIfNotFound: true);
         m_CharacterControls_Button4 = m_CharacterControls.FindAction("Button 4", throwIfNotFound: true);
         m_CharacterControls_Debug = m_CharacterControls.FindAction("Debug", throwIfNotFound: true);
+        m_CharacterControls_Start = m_CharacterControls.FindAction("Start", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -414,6 +466,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Button3;
     private readonly InputAction m_CharacterControls_Button4;
     private readonly InputAction m_CharacterControls_Debug;
+    private readonly InputAction m_CharacterControls_Start;
     public struct CharacterControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -424,6 +477,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Button3 => m_Wrapper.m_CharacterControls_Button3;
         public InputAction @Button4 => m_Wrapper.m_CharacterControls_Button4;
         public InputAction @Debug => m_Wrapper.m_CharacterControls_Debug;
+        public InputAction @Start => m_Wrapper.m_CharacterControls_Start;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -451,6 +505,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Debug.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDebug;
                 @Debug.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDebug;
                 @Debug.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDebug;
+                @Start.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -473,10 +530,46 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Debug.started += instance.OnDebug;
                 @Debug.performed += instance.OnDebug;
                 @Debug.canceled += instance.OnDebug;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
     public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Newaction;
+    public struct MenuActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public MenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -503,5 +596,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnButton3(InputAction.CallbackContext context);
         void OnButton4(InputAction.CallbackContext context);
         void OnDebug(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

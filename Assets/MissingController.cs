@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MissingController : MonoBehaviour
 {
-    void Update()
-    {
 
+    public void OnPressedStart()
+    {
+        GameMatchManager.Manager.StartGame();
+        print("pressed start");
     }
+
 }

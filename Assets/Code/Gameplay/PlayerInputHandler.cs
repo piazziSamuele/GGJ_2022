@@ -15,7 +15,6 @@ public class PlayerInputHandler : InputHandler
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
-        
         //Power Ups
         
         playerInputActions.CharacterControls.Button1.started += ctx => PowerUpButtonPressed(0,ctx);

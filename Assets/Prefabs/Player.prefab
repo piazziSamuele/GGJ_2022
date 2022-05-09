@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f7469dd6463c041aaafbb7ae3cc7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlledCharacter: {fileID: 0}
   playerInput: {fileID: -7840465864538376015}
+  controlledCharacter: {fileID: 0}
 --- !u!114 &3493463235447024996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +108,16 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c8038ace-2492-4ed8-b4dd-d05b54b47e33
     m_ActionName: CharacterControls/Debug[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c8f3678-d497-44de-8698-65d3575ce278
+    m_ActionName: CharacterControls/Start[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32098743-675e-4ba0-802f-432ec5124d93
+    m_ActionName: Menu/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: CharacterControls
+  m_DefaultActionMap: a97a9acb-c6dc-4059-ab30-a91513af586f
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class GameMatchManager : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class GameMatchManager : MonoBehaviour
         {
             m_ui.ConnectControllerObj.SetActive(true);
         }
-        else
+        else if(InputUser.all.Count < 2)
         {
             SpawnPlayers();
             SetUpCharacterControllers();
