@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -43,17 +44,19 @@ public class UIManager : MonoBehaviour
         MenuObj.SetActive(true);
         GamePanel.SetActive(false);
 
+
+    }
+    public void SetSelectedButton(GameObject button)
+    {
+        EventSystem.current.SetSelectedGameObject(button);
     }
 
-    public void SetActiveGameContainer(bool value)
+
+    public void StartGame()
     {
-        GameMatchManager.Manager.SetActiveGameContainer(value);
+        GameMatchManager.Manager.StartGame();
     }
 
-    public void PlayAudioSource()
-    {
-        GameMatchManager.Manager.PlayAudioTrack();
-    }
 
     //public void UpdateInvetory()
     //{

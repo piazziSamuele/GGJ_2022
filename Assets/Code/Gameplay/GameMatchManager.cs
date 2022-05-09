@@ -56,13 +56,15 @@ public class GameMatchManager : MonoBehaviour
         {
             SpawnPlayers();
             SetUpCharacterControllers();
-
+            SetActiveGameContainer(true);
+            PlayAudioTrack();
+            m_ui.GamePanel.SetActive(true);
         }
     }
     private void SpawnPlayers()
     {
-        p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
-        p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[2]).GetComponent<InputHandler>();
+        p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).GetComponent<InputHandler>();
+        p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
 
     }
 
