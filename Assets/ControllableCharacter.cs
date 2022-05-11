@@ -20,7 +20,7 @@ public class ControllableCharacter : MonoBehaviour
     
     public void OnControlDeviceChange(ControlDevice device)
     {
-        onControlDeviceChange?.Invoke(device);
+        onControlDeviceChange.Invoke(device);
     }
 
     public void OnSwitch()

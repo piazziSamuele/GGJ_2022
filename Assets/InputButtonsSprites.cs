@@ -7,12 +7,12 @@ using UnityEngine;
 public class InputButtonsSprites : ScriptableObject
 {
     public List<Sprites> controlSchemes = new List<Sprites>(); 
-    public Sprite[] GetSprites(string controlDevice)
+    public Sprite[] GetSprites(ControlDevice device)
     {
         Sprite[] sprites = null;
         foreach (Sprites sprite in controlSchemes)
         {
-            if(sprite.device.ToString() == controlDevice)
+            if(sprite.device == device)
             {
                 sprites = sprite.sprites;
             }

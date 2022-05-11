@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : InputHandler
 {
     PlayerInputActions playerInputActions;
-
     
     Vector3 currentMovementInput = new Vector3();
 
@@ -33,11 +32,7 @@ public class PlayerInputHandler : InputHandler
         //adding this just to be sure it cancel movement when leaving input
         playerInputActions.CharacterControls.Movement.canceled += RegisterMovementInput;
     }
-    public void OnInputDeviceChange()
-    {
-        //ControlDevice device = playerInput.devices[0].name == 
-        //controlledCharacter.OnControlDeviceChange(device);
-    }
+    
 
 
     private void RegisterMovementInput(InputAction.CallbackContext ctx)
@@ -74,14 +69,22 @@ public class PlayerInputHandler : InputHandler
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] internal PlayerInput playerInput;
-    public Action<ControllableCharacter> onControlledCharacterChanged;
     public ControllableCharacter controlledCharacter;
+    internal ControlDevice device;
+
     public virtual void SetControlledCharacter(ControllableCharacter character)
     {
         controlledCharacter = character;
-        onControlledCharacterChanged?.Invoke(character);
     }
 
+    public void OnControllerDeviceUpdated()
+    {
+        this.device = playerInput.devices[0].name == "XInputControllerWindows" ? ControlDevice.XboxController :
+           playerInput.devices[0].name == "DualSenseGamepadHID" ||
+           playerInput.devices[0].name == "placeholder" ? ControlDevice.PlaystationController :
+           ControlDevice.XboxController;
+        controlledCharacter.OnControlDeviceChange(device);
+    }
     public void PowerUpButtonPressed(int buttonPressed,InputAction.CallbackContext ctx)
     {
         if (ctx.control.device != playerInput.devices[0]) return;

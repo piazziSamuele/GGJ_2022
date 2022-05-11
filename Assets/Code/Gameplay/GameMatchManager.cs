@@ -57,6 +57,7 @@ public class GameMatchManager : MonoBehaviour
         {
             SpawnPlayers();
             SetUpCharacterControllers();
+            UpdateUIButtonSprites();
             SetActiveGameContainer(true);
             PlayAudioTrack();
             m_ui.GamePanel.SetActive(true);
@@ -66,9 +67,13 @@ public class GameMatchManager : MonoBehaviour
     {
         p1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[0]).GetComponent<InputHandler>();
         p2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: Gamepad.all[1]).GetComponent<InputHandler>();
-
     }
 
+    private void UpdateUIButtonSprites()
+    {
+        p1.OnControllerDeviceUpdated();
+        p2.OnControllerDeviceUpdated();
+    }
 
     private void SetUpCharacterControllers()
     {

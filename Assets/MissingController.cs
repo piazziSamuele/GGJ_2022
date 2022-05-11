@@ -9,7 +9,6 @@ public class MissingController : MonoBehaviour
     public void OnPressedStart()
     {
         GameMatchManager.Manager.StartGame();
-        print("pressed start");
     }
 
 }

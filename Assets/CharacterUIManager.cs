@@ -27,12 +27,10 @@ public class CharacterUIManager : MonoBehaviour
     private void OnEnable()
     {
         currentPowerUps.onPowerUpPickUp += OnPowerUpPickUp;
-        character.onControlDeviceChange += inputButtons.AssignButtonSprite;
     }
     private void OnDisable()
     {
         currentPowerUps.onPowerUpPickUp -= OnPowerUpPickUp;
-        character.onControlDeviceChange -= inputButtons.AssignButtonSprite;
     }
 
     private void OnPowerUpPickUp(PowerUpSO powerUp)
@@ -74,7 +72,6 @@ public class CharacterUIManager : MonoBehaviour
                 _activeButtons[i].powerUpUI.powerUp = null;
                 _activeButtons[i].powerUpUI.gameObject.SetActive(false);
                 _activeButtons[i] = null;
-                print("bobby");
             }
 
         }

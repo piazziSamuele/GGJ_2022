@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class UIInputButtons : MonoBehaviour
 {
@@ -15,19 +10,15 @@ public class UIInputButtons : MonoBehaviour
     [SerializeField] ControllableCharacter character;
 
     private Sprite[] updatedSprites = new Sprite[4];
-    private string currentControlScheme = "a";
     private void OnEnable()
     {
         character.onControlDeviceChange += AssignButtonSprite;
     }
-    private void OnDisable()
-    {
-        character.onControlDeviceChange -= AssignButtonSprite;
-    }
 
     public void AssignButtonSprite(ControlDevice device)
     {
-        updatedSprites = inputButtonSprites.GetSprites(currentControlScheme);
+        print("assigning buttons");
+        updatedSprites = inputButtonSprites.GetSprites(device);
         if (updatedSprites != null)
         {
             buttonSouth.SetButtonSprite(updatedSprites[0]);

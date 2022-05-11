@@ -22,7 +22,10 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
     public override void EndPowerUpAction()
     {
         rifle.SetActive(false);
-        StopCoroutine(fireRoutine);
+        if (fireRoutine != null)
+        {
+            StopCoroutine(fireRoutine);
+        }
         coroutineIsRunning = false;
     }
 
