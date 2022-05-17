@@ -27,7 +27,10 @@ public class ControllableCharacter : MonoBehaviour
     {
         foreach (GenericPowerUp powerUp in currentPowerUps.GetPowerUps())
         {
-            powerUp.EndPowerUpAction();
+            if (powerUp != null)
+            {
+                powerUp.EndPowerUpAction();
+            }
         }
 
         CurrentMovementInput = Vector3.zero;
