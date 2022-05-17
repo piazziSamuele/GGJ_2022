@@ -27,7 +27,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d5b788d8fef81bd4a9b802492901289b, type: 3}
   - device: 2
     sprites:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 52706dc298c1fe64db81d6258ffdba5c, type: 3}
+    - {fileID: 21300000, guid: 1d3587d2b1a9987468c143647936e41e, type: 3}
+    - {fileID: 21300000, guid: 0934ba8d5e9a1d14491b8b3ec4cb40f5, type: 3}
+    - {fileID: 21300000, guid: d4bed8b65424b6c41be2580738d9a9f8, type: 3}

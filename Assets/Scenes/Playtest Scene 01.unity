@@ -1308,7 +1308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460081630}
   m_LocalRotation: {x: 0.42660013, y: 0.33944437, z: -0.17670354, w: 0.8194912}
-  m_LocalPosition: {x: -5.272702, y: 8.35869, z: 0.98860496}
+  m_LocalPosition: {x: -6.2180934, y: 10.488536, z: -0.48833123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8117916}
@@ -1431,7 +1431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7698712286400421518, guid: 88cc670f806bb2a4797810a213e7b039, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.6449375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7698712286400421518, guid: 88cc670f806bb2a4797810a213e7b039, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7698712286400421518, guid: 88cc670f806bb2a4797810a213e7b039, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.644936
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7698712286400421518, guid: 88cc670f806bb2a4797810a213e7b039, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2207,7 +2207,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LifeBar (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: f9a68d852337b2d4c904b2255f1b0dd4, type: 3}
+  m_Shader: {fileID: 4800000, guid: ca17fda871ac4ff429016afe28b0dd82, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2218,6 +2218,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -2232,9 +2236,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_498748ef2f884fde9b7fd0f37e384d13: 1.35
-    - life: 0
+    - _LifeBar: 1
+    - life: 1
     m_Colors:
     - Color_e30bdf25908c4be7ad91ac9888820b56: {r: 0.1390101, g: 1, b: 0.06132078, a: 0}
+    - _LifeBarColor: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &791837909 stripped
 MonoBehaviour:
@@ -2603,7 +2609,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LifeBar (Instance) (Instance) (Instance) (Instance) (Instance)
-  m_Shader: {fileID: -6465566751694194690, guid: f9a68d852337b2d4c904b2255f1b0dd4, type: 3}
+  m_Shader: {fileID: 4800000, guid: ca17fda871ac4ff429016afe28b0dd82, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2614,6 +2620,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -2628,9 +2638,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_498748ef2f884fde9b7fd0f37e384d13: 1.35
-    - life: 0
+    - _LifeBar: 1
+    - life: 1
     m_Colors:
     - Color_e30bdf25908c4be7ad91ac9888820b56: {r: 0.1390101, g: 1, b: 0.06132078, a: 0}
+    - _LifeBarColor: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1079159514
 GameObject:
@@ -3041,7 +3053,6 @@ GameObject:
   - component: {fileID: 1090228656}
   - component: {fileID: 1090228659}
   - component: {fileID: 1090228657}
-  - component: {fileID: 1090228658}
   m_Layer: 5
   m_Name: UI Camera
   m_TagString: MainCamera
@@ -3097,39 +3108,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1090228658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090228655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 1
-  m_Cameras: []
-  m_RendererIndex: 0
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!20 &1090228659
 Camera:
   m_ObjectHideFlags: 0
@@ -3139,7 +3117,7 @@ Camera:
   m_GameObject: {fileID: 1090228655}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3891,13 +3869,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 96
+  field of view: 70
   orthographic: 0
   orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3917,7 +3895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789786988}
   m_LocalRotation: {x: 0.42660013, y: 0.33944437, z: -0.17670354, w: 0.8194912}
-  m_LocalPosition: {x: -5.272702, y: 11.35869, z: 0.98860496}
+  m_LocalPosition: {x: -6.2180934, y: 13.488536, z: -0.48833123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1090228656}
@@ -3978,7 +3956,6 @@ MonoBehaviour:
   - {fileID: 1090228659}
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
