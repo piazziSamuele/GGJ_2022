@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject  WinObj, LoseObj, MenuObj, GamePanel;
+    public GameObject WinObj, LoseObj, MenuObj, GamePanel, ConnectControllerObj;
     public Text SwitchHighlight, TimeText;
     public InvetoryItemUIView[] Inventory = new InvetoryItemUIView[4];
     public void Start()
@@ -43,32 +44,34 @@ public class UIManager : MonoBehaviour
         MenuObj.SetActive(true);
         GamePanel.SetActive(false);
 
-    }
 
-    public void SetActiveGameContainer(bool value)
+    }
+    public void SetSelectedButton(GameObject button)
     {
-        GameMatchManager.Manager.SetActiveGameContainer(value);
+        EventSystem.current.SetSelectedGameObject(button);
     }
 
-    public void PlayAudioSource()
+
+    public void StartGame()
     {
-        GameMatchManager.Manager.PlayAudioTrack();
+        GameMatchManager.Manager.StartGame();
     }
 
-    public void UpdateInvetory()
-    {
-        PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetArray();
-        for (int i = 0; i < Inventory.Length; i++)
-        {
-            Inventory[i].EmptySlot();
-        }
 
-        for (int i = 0; i < powerups.Length; i++)
-        {
-            Inventory[i].AssignItemIcon(powerups[i].icon);
-        }
+    //public void UpdateInvetory()
+    //{
+    //    PowerUpSO[] powerups = GameMatchManager.Manager.GetCurrentPlayerPowerUps().GetPowerUpDataArray();
+    //    for (int i = 0; i < Inventory.Length; i++)
+    //    {
+    //        Inventory[i].EmptySlot();
+    //    }
 
-    }
+    //    for (int i = 0; i < powerups.Length; i++)
+    //    {
+    //        Inventory[i].AssignItemIcon(powerups[i].icon);
+    //    }
+
+    //}
     public void ReloadGameScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();

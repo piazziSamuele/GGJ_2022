@@ -7,6 +7,7 @@ public class PowerUpsHandler : MonoBehaviour
 {
     public ControllableCharacter character;
     public UIManager uiManager;
+    
     private void OnEnable()
     {
         character.powerUpButtonPressed += ActivatePowerUp;
@@ -37,10 +38,17 @@ public class PowerUpsHandler : MonoBehaviour
             GenericPowerUp p = pickUp.powerUpPrefab;
             if (character.currentPowerUps.TryPickUp(p, transform, out GenericPowerUp equipablePowerUp))
             {
-                uiManager.UpdateInvetory();
+                //uiManager.UpdateInvetory();
                 equipablePowerUp.assignedCharacter = this.character;
                 equipablePowerUp.SubscribeToEvents();
+                equipablePowerUp.onPowerUpLifetimeEnd += OnPowerUPLifetimeEnd;
             };
         }
+    }
+    private void OnPowerUPLifetimeEnd(GenericPowerUp powerUp)
+    {
+        powerUp.EndPowerUpAction();
+        character.currentPowerUps.RemovePowerUp(powerUp.PowerUpData);
+        powerUp.onPowerUpLifetimeEnd -= OnPowerUPLifetimeEnd;
     }
 }

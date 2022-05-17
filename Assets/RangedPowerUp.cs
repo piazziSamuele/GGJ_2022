@@ -12,6 +12,7 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
 
     public override void PerformPowerUpAction()
     {
+        base.PerformPowerUpAction();
         if (!coroutineIsRunning)
         {
             rifle.SetActive(true);
@@ -21,7 +22,11 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
     public override void EndPowerUpAction()
     {
         rifle.SetActive(false);
-        StopCoroutine(fireRoutine);
+        if (fireRoutine != null)
+        {
+            StopCoroutine(fireRoutine);
+        }
+        coroutineIsRunning = false;
     }
 
     IEnumerator FireRoutine()
@@ -32,11 +37,8 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
             Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
             projectile.speed = powerUpData.projectileSpeed;
             projectile.damage = powerUpData.damagePerBullet;
+            currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
             yield return new WaitForSeconds(powerUpData.fireRate);
         }
     }
-
-
-
-
 }

@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedCharacter: {fileID: 0}
   powerUpData: {fileID: 11400000, guid: e83b97aa0bcec314cab4b35060994e8d, type: 2}
+  currentCharge: 0
+  totalPowerUpDuration: 15
+  percentChargePerUse: 2
   shield: {fileID: 2882871289587947286}
 --- !u!1 &2882871289587947286
 GameObject:

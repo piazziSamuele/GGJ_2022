@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,13 @@ using UnityEngine;
 
 public class CurrentPowerUps : ScriptableObject
 {
+    public event Action<PowerUpSO> onPowerUpPickUp;
     public void ClearList()
     {
         powerUpsData.Clear();
-        powerUpsInstance.Clear();
     }
     [SerializeField] List<PowerUpSO> powerUpsData = new List<PowerUpSO>();
-    [SerializeField] List<GenericPowerUp> powerUpsInstance = new List<GenericPowerUp>();
+    [SerializeField] GenericPowerUp[] instantatedPowerUps = new GenericPowerUp[4];
 
 
     public bool TryPickUp(GenericPowerUp powerUp,Transform characterTransform, out GenericPowerUp powerUpInstance)
@@ -22,27 +23,67 @@ public class CurrentPowerUps : ScriptableObject
         if (powerUpsData.Count >= 4) return false;
         powerUpsData.Add(powerUp.PowerUpData);
         powerUpInstance = Instantiate(powerUp, characterTransform);
-        powerUpsInstance.Add(powerUpInstance);
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
+        {
+            if(instantatedPowerUps[i] == null)
+            {
+                instantatedPowerUps[i] = powerUpInstance;
+                break;
+            }
+        }
+        onPowerUpPickUp?.Invoke(powerUp.PowerUpData);
         return true;
+    }
+    public void RemovePowerUp(PowerUpSO powerUp)
+    {
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
+        {
+            if (instantatedPowerUps[i] != null && instantatedPowerUps[i].PowerUpData == powerUp)
+            {
+                instantatedPowerUps[i] = null;
+            }
+
+        }
+
+        powerUpsData.Remove(powerUp);
+        powerUpsData.RemoveAll(item => item == null);
+
     }
     public void ActivatePowerUp(int buttonNumber)
     {
-        if (powerUpsInstance.Count > buttonNumber && powerUpsInstance[buttonNumber] != null)
+        if (instantatedPowerUps.Length > buttonNumber && instantatedPowerUps[buttonNumber] != null)
         {
-            powerUpsInstance[buttonNumber].PerformPowerUpAction();
+            instantatedPowerUps[buttonNumber].PerformPowerUpAction();
         }
     }
     public void ReleasePowerUp(int buttonNumber)
     {
-        if (powerUpsInstance.Count > buttonNumber && powerUpsInstance[buttonNumber] != null)
+        if (instantatedPowerUps.Length > buttonNumber && instantatedPowerUps[buttonNumber] != null)
         {
-            powerUpsInstance[buttonNumber].EndPowerUpAction();
+            instantatedPowerUps[buttonNumber].EndPowerUpAction();
         }
-
     }
 
-    public PowerUpSO[] GetArray()
+    public float GetPowerUpLifePercentage(PowerUpSO powerUp)
+    {
+        float v = 0;
+        for (int i = 0; i < instantatedPowerUps.Length; i++)
+        {
+            if(instantatedPowerUps[i] != null && instantatedPowerUps[i].PowerUpData == powerUp)
+            {
+                v = instantatedPowerUps[i].GetChargePercent();
+            }
+        }
+        return v;
+    }
+
+    public PowerUpSO[] GetPowerUpDataArray()
     {
         return powerUpsData.ToArray();
     }
+    public GenericPowerUp[] GetPowerUps()
+    {
+        return instantatedPowerUps;
+    }
+
 }

@@ -13,6 +13,7 @@ public class Dash : PowerUp<DashPowerUpSO>
 
     public override void PerformPowerUpAction()
     {
+        base.PerformPowerUpAction();
         if (dashTimer >= powerUpData.dashCooldown)
         {
             movementInput = assignedCharacter.GetComponent<CharacterMovement>().MovementInput;
@@ -28,6 +29,7 @@ public class Dash : PowerUp<DashPowerUpSO>
     private void PerformDash()
     {
         dashCoroutine = StartCoroutine(DashCoroutine());
+        currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
     }
     IEnumerator DashCoroutine()
     {
@@ -40,8 +42,9 @@ public class Dash : PowerUp<DashPowerUpSO>
         }
 
     }
-    void Update()
+    public override void Update()
     {
+        base.Update();
         dashTimer += Time.deltaTime;
     }
 }

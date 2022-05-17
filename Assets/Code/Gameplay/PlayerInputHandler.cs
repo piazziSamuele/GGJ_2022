@@ -2,42 +2,46 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : InputHandler
 {
-    PlayerInput playerInput;
+    PlayerInputActions playerInputActions;
+    
     Vector3 currentMovementInput = new Vector3();
+
 
     private void Awake()
     {
-        playerInput = new PlayerInput();
-
+        playerInputActions = new PlayerInputActions();
         //Power Ups
-        playerInput.CharacterControls.Button1.started += ctx => PowerUpButtonPressed(0);
-        playerInput.CharacterControls.Button2.started += ctx => PowerUpButtonPressed(1);
-        playerInput.CharacterControls.Button3.started += ctx => PowerUpButtonPressed(2);
-        playerInput.CharacterControls.Button4.started += ctx => PowerUpButtonPressed(3);
+        
+        playerInputActions.CharacterControls.Button1.started += ctx => PowerUpButtonPressed(0,ctx);
+        playerInputActions.CharacterControls.Button2.started += ctx => PowerUpButtonPressed(1,ctx);
+        playerInputActions.CharacterControls.Button3.started += ctx => PowerUpButtonPressed(2,ctx);
+        playerInputActions.CharacterControls.Button4.started += ctx => PowerUpButtonPressed(3,ctx);
 
-        playerInput.CharacterControls.Button1.canceled += ctx => PowerUpButtonReleased(0);
-        playerInput.CharacterControls.Button2.canceled += ctx => PowerUpButtonReleased(1);
-        playerInput.CharacterControls.Button3.canceled += ctx => PowerUpButtonReleased(2);
-        playerInput.CharacterControls.Button4.canceled += ctx => PowerUpButtonReleased(3);
+        playerInputActions.CharacterControls.Button1.canceled += ctx => PowerUpButtonReleased(0);
+        playerInputActions.CharacterControls.Button2.canceled += ctx => PowerUpButtonReleased(1);
+        playerInputActions.CharacterControls.Button3.canceled += ctx => PowerUpButtonReleased(2);
+        playerInputActions.CharacterControls.Button4.canceled += ctx => PowerUpButtonReleased(3);
 
 
         //Movement
-        playerInput.CharacterControls.Movement.performed += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
+        playerInputActions.CharacterControls.Movement.performed += RegisterMovementInput;
         //adding this just to be sure it cancel movement when leaving input
-        playerInput.CharacterControls.Movement.canceled += ctx => RegisterMovementInput(ctx.ReadValue<Vector2>());
+        playerInputActions.CharacterControls.Movement.canceled += RegisterMovementInput;
     }
     
 
 
-    private void RegisterMovementInput(Vector2 input)
+    private void RegisterMovementInput(InputAction.CallbackContext ctx)
     {
-        currentMovementInput.x = input.x;
-        currentMovementInput.z = input.y;
+        if (ctx.control.device != playerInput.devices[0]) return;
+        currentMovementInput.x = ctx.ReadValue<Vector2>().x;
+        currentMovementInput.z = ctx.ReadValue<Vector2>().y;
         if(controlledCharacter != null)
-        controlledCharacter.CurrentMovementInput = CameraRelatedMovementInput(input);
+        controlledCharacter.CurrentMovementInput = CameraRelatedMovementInput(currentMovementInput);
     }
 
     public Vector3 CameraRelatedMovementInput(Vector3 input)
@@ -53,25 +57,37 @@ public class PlayerInputHandler : InputHandler
 
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerInputActions.Enable();
     }
     private void OnDisable()
     {
-        playerInput.Disable();
+        playerInputActions.Disable();
     }
 }
 
 
 public class InputHandler : MonoBehaviour
 {
-    internal ControllableCharacter controlledCharacter;
+    [SerializeField] internal PlayerInput playerInput;
+    public ControllableCharacter controlledCharacter;
+    internal ControlDevice device;
+
     public virtual void SetControlledCharacter(ControllableCharacter character)
     {
         controlledCharacter = character;
     }
 
-    internal void PowerUpButtonPressed(int buttonPressed)
+    public void OnControllerDeviceUpdated()
     {
+        this.device = playerInput.devices[0].name == "XInputControllerWindows" ? ControlDevice.XboxController :
+           playerInput.devices[0].name == "DualSenseGamepadHID" ||
+           playerInput.devices[0].name == "placeholder" ? ControlDevice.PlaystationController :
+           ControlDevice.XboxController;
+        controlledCharacter.OnControlDeviceChange(device);
+    }
+    public void PowerUpButtonPressed(int buttonPressed,InputAction.CallbackContext ctx)
+    {
+        if (ctx.control.device != playerInput.devices[0]) return;
         if(controlledCharacter != null)
         controlledCharacter.HandleAbilityButtonPressed(buttonPressed);
     }
