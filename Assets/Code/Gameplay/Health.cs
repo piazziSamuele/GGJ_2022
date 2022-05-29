@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public float startHealth = 100;
     public float flatDamageReduction = 0f;
     public float healthPercet;
+    public bool isInvulnerable = false;
 
     private void Awake()
     {
@@ -15,6 +16,10 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        if(isInvulnerable)
+        {
+            return;
+        }
         if(damage >= value)
         {
             value = 0;

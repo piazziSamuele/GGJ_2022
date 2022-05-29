@@ -9,6 +9,7 @@ public class Dash : PowerUp<DashPowerUpSO>
     Coroutine dashCoroutine;
     Vector3 movementInput = new Vector3();
     Vector3 startingPosition = new Vector3();
+    Health characterHealth;
 
 
     public override void PerformPowerUpAction()
@@ -16,6 +17,8 @@ public class Dash : PowerUp<DashPowerUpSO>
         base.PerformPowerUpAction();
         if (dashTimer >= powerUpData.dashCooldown)
         {
+            characterHealth = assignedCharacter.GetComponent<Health>();
+            characterHealth.isInvulnerable = true;
             movementInput = assignedCharacter.GetComponent<CharacterMovement>().MovementInput;
             dashTargetPosition = assignedCharacter.transform.position + (movementInput.normalized * powerUpData.dashDistance);
             startingPosition = assignedCharacter.transform.position;
@@ -25,6 +28,11 @@ public class Dash : PowerUp<DashPowerUpSO>
             StopCoroutine(dashCoroutine);
             PerformDash();
         }
+    }
+    public override void EndPowerUpAction()
+    {
+        base.EndPowerUpAction();
+        characterHealth.isInvulnerable = false;
     }
     private void PerformDash()
     {
@@ -40,7 +48,7 @@ public class Dash : PowerUp<DashPowerUpSO>
             assignedCharacter.transform.position = Vector3.Lerp(startingPosition, dashTargetPosition,t);
             yield return null;
         }
-
+        characterHealth.isInvulnerable = false;
     }
     public override void Update()
     {
