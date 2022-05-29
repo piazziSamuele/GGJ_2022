@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
 {
-    [SerializeField] Transform firePoint;
+    [SerializeField] Transform[] firePoints;
     [SerializeField] Projectile projectilePrefab;
-    [SerializeField] GameObject rifle;
     Coroutine fireRoutine;
     bool coroutineIsRunning = false;
 
@@ -15,13 +14,11 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
         base.PerformPowerUpAction();
         if (!coroutineIsRunning)
         {
-            rifle.SetActive(true);
             fireRoutine = StartCoroutine(FireRoutine());
         }
     }
     public override void EndPowerUpAction()
     {
-        rifle.SetActive(false);
         if (fireRoutine != null)
         {
             StopCoroutine(fireRoutine);
@@ -34,9 +31,12 @@ public class RangedPowerUp : PowerUp<RangedWeaponPowerUpSO>
         coroutineIsRunning = true;
         while (true)
         {
-            Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
-            projectile.speed = powerUpData.projectileSpeed;
-            projectile.damage = powerUpData.damagePerBullet;
+            foreach (Transform firePoint in firePoints)
+            {
+                Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.transform.rotation);
+                projectile.speed = powerUpData.projectileSpeed;
+                projectile.damage = powerUpData.damagePerBullet;
+            }
             currentCharge -= (percentChargePerUse * totalPowerUpDuration) / 100;
             yield return new WaitForSeconds(powerUpData.fireRate);
         }

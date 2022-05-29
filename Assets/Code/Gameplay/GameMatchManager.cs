@@ -94,7 +94,7 @@ public class GameMatchManager : MonoBehaviour
     public void PlayAudioTrack()
     {
         soundtrack.Play();
-        SpawnPowerUp();
+        SpawnPowerUp(8);
     }
 
     public bool GetAudioSourcePlayingValue()
@@ -149,28 +149,28 @@ public class GameMatchManager : MonoBehaviour
         blockSwitch = false;
     }
 
-    private void SpawnPowerUp()
+    private void SpawnPowerUp(int n)
     {
-        Vector3 propPosition = Random.insideUnitCircle * 30f;
-        propPosition.z = propPosition.y;
-        propPosition.y = 8;
-        RaycastHit hit;
-        if ( Physics.Raycast(propPosition,  Vector3.down , out hit, 20.0f ) )
+        for (int i = 0; i < n; i++)
         {
-            if ( hit.collider.gameObject.tag != "GameArena" ) // temporary tag
+            Vector3 propPosition = Random.insideUnitCircle * 30f;
+            propPosition.z = propPosition.y;
+            propPosition.y = 8;
+            RaycastHit hit;
+            if (Physics.Raycast(propPosition, Vector3.down, out hit, 20.0f))
             {
-                InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA NOT FOUND", 2);
-                return;
+                if (hit.collider.gameObject.tag != "GameArena") // temporary tag
+                {
+                    InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA NOT FOUND", 2);
+                    return;
+                }
+
+                InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA FOUND");
+                propPosition.y = 1;
+                GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], propPosition, Quaternion.identity, GameConainer.transform);
+                InGameDebugConsole.IGDebugConsole.ShowMessage(string.Format("Spawned FOUND {0}", newPowerUp.name));
             }
-
-            InGameDebugConsole.IGDebugConsole.ShowMessage("ARENA FOUND");
-            propPosition.y = 1;
-            GameObject newPowerUp = Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], propPosition, Quaternion.identity, GameConainer.transform);
-            InGameDebugConsole.IGDebugConsole.ShowMessage(string.Format("Spawned FOUND {0}", newPowerUp.name));
-
         }
-
-
     }
 
     //public CurrentPowerUps GetCurrentPlayerPowerUps()
@@ -195,7 +195,7 @@ public class GameMatchManager : MonoBehaviour
         var v = p1.controlledCharacter;
         p1.controlledCharacter = p2.controlledCharacter;
         p2.controlledCharacter = v;
-        SpawnPowerUp();
+        SpawnPowerUp(1);
 
 
     }
